@@ -157,8 +157,8 @@ const teams = [
         "displayName": "Caio Cotts",
         "socialLink": "",
         "position": "Developer - Backend",
-        "mainProfilePicturePath": "",
-        "secondaryProfilePicturePath": ""
+        "mainProfilePicturePath": "/team-profiles/caio-cotts.jpg",
+        "secondaryProfilePicturePath": "/team-profiles/caio-cotts-alt.jpg"
     },
     {
         "displayName": "Keagan Cameron",
