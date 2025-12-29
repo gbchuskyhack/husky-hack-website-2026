@@ -14,7 +14,6 @@ export default function Home() {
             <SponsorsSection />
             {/* Partner Section */}
             <FAQSection />
-            {/* Team Section */}
             <TeamSection />
             {/* Contact Section */}
             {/* Footer */}
