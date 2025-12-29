@@ -1,10 +1,17 @@
-import NavBar from "./components/Nav";
+import {ReactNode, useState} from 'react'
+import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home/Home.tsx";
+function App() {
 
-
-export default function App() {
   return (
-    <>
-      <NavBar />  
-    </>
+      <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<Home/> as ReactNode} /> {/* type casted, SHOULD be safe*/}
+              {/*<Route path="/register" element={<Register />} />*/}
+          </Routes>
+      </BrowserRouter>
   )
 }
+
+export default App
