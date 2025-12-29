@@ -7,6 +7,5 @@ import Home from './Home.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
-    <Home/>
   </StrictMode>,
 )
