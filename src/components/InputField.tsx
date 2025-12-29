@@ -60,7 +60,7 @@ function InputField(props: InputFieldProps) {
         return true;
     }, [value, required, customValidation, label]);
 
-    const api = {
+    const api:InputFieldRef = {
         getValue: () => value,
         getName: () => name,
         validate: () => runValidation(), // uses the callback function
