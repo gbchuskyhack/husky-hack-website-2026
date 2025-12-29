@@ -2,7 +2,7 @@ const teams = [
     {
         "displayName": "Sokmontrey Sythat",
         "socialLink": "https://sokmontrey.me",
-        "position": "Co-President",
+        "position": "President",
         "mainProfilePicturePath": "/team-profiles/sokmontrey.jpeg",
         "secondaryProfilePicturePath": "/team-profiles/sokmontrey-alt.JPG"
     },
