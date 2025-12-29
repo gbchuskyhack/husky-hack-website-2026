@@ -1,0 +1,15 @@
+[
+  { "title": "Shopify", "image": "/logos/shopify.svg", "borderColor": "#84cc16", "tier": "gold" },
+  { "title": "Foresters Financial", "image": "/logos/foresters.svg", "borderColor": "#ec4899", "tier": "gold" },
+  { "title": "Apple", "image": "/logos/foresters.svg", "borderColor": "#ec4899", "tier": "gold" },
+
+  { "title": "Sentra", "image": "/logos/sentra.svg", "borderColor": "#38bdf8", "tier": "silver" },
+  { "title": "1Password", "image": "/logos/1password.svg", "borderColor": "#6366f1", "tier": "silver" },
+  { "title": "Ubisoft", "image": "/logos/ubisoft.svg", "borderColor": "#e5e7eb", "tier": "silver" },
+  { "title": "Tesla", "image": "/logos/ubisoft.svg", "borderColor": "#e5e7eb", "tier": "silver" },
+
+  { "title": "Google", "image": "/logos/google.svg", "borderColor": "#facc15", "tier": "bronze" },
+  { "title": "Google DeepMind", "image": "/logos/deepmind.svg", "borderColor": "#60a5fa", "tier": "bronze" },
+  { "title": "Backboard.io", "image": "/logos/backboard.svg", "borderColor": "#22c55e", "tier": "bronze" },
+  { "title": "TD", "image": "/logos/td.svg", "borderColor": "#16a34a", "tier": "bronze" }
+]
