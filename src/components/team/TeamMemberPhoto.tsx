@@ -5,7 +5,7 @@ interface TeamMemberPhotoProps {
     className?: string;
 }
 
-export default function TeamMemberPhoto({ mainProfilePicturePath, secondaryProfilePicturePath, className = "w-64 h-64" }: TeamMemberPhotoProps) {
+export default function TeamMemberPhoto({ mainProfilePicturePath, secondaryProfilePicturePath, className = "w-24 h-24" }: TeamMemberPhotoProps) {
     return (
         <>
             {mainProfilePicturePath || secondaryProfilePicturePath ? (
@@ -27,7 +27,7 @@ export default function TeamMemberPhoto({ mainProfilePicturePath, secondaryProfi
                 </div>
             ) : (
                 <div className={`bg-gray-100 flex items-center justify-center rounded-full ${className}`}>
-                    <svg className="w-20 h-20 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-10 h-10 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                     </svg>
                 </div>

@@ -154,7 +154,7 @@ const teams = [
         "secondaryProfilePicturePath": ""
     },
     {
-        "displayName": "Ciao Cotts",
+        "displayName": "Caio Cotts",
         "socialLink": "",
         "position": "Developer - Backend",
         "mainProfilePicturePath": "",
