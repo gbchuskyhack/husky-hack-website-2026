@@ -11,6 +11,14 @@ export default function HeroSection() {
             </div>
 
             <NewsletterForm />
+
+            <div>
+                Interested in sponsoring?
+                <span> </span>
+                <a href="mailto:huskyhack.sponsor@gmail.com" className="underline">
+                    Contact us!
+                </a>
+            </div>
         </div>
     );
 }
