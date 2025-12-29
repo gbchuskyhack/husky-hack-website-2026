@@ -1,4 +1,4 @@
-import {ChangeEvent, RefObject, useCallback, useContext, useEffect, useImperativeHandle, useState} from "react";
+import { useCallback, useContext, useEffect, useImperativeHandle, useState, type RefObject } from "react";
 import FormContext from "./FormContext.tsx";
 
 export interface InputFieldRef {
@@ -38,9 +38,9 @@ function InputField(props: InputFieldProps) {
         name,
         type,
         required = false,
-        placeholder,
+        placeholder, // Kept to silence unused error if intended for future use, or remove entirely
         customValidation = [],
-        maxLength = 100,
+        maxLength = 100, // Kept to silence unused error
         ref
     } = props;
 
@@ -56,18 +56,18 @@ function InputField(props: InputFieldProps) {
                 return false;
             }
         }
-        setError(null);
+        setError("");
         return true;
     }, [value, required, customValidation, label]);
 
-    const api:InputFieldRef = {
+    const api: InputFieldRef = {
         getValue: () => value,
         getName: () => name,
         validate: () => runValidation(), // uses the callback function
         setExternalError: (msg: string) => setError(msg),
         reset: () => {
             setValue("");
-            setError(null);
+            setError("");
         }
     };
 
@@ -104,15 +104,16 @@ function InputField(props: InputFieldProps) {
             <label htmlFor={name}>{label}</label>
             <input
                 id={name}
-                type={type === "long-answer" ? "text" : type}
+                type={type}
                 value={value}
-                onChange={(e)=>setValue(e.target.value)}
+                onChange={(e) => setValue(e.target.value)}
                 onBlur={() => runValidation()}
-                className={`p-2 border rounded-md focus:ring-2 outline-none transition-all ${
-                    error ? "border-red-500 focus:ring-red-100" : "border-gray-300 focus:ring-blue-100"
-                }`}
+                placeholder={placeholder}
+                maxLength={maxLength}
+                className={`p-2 border rounded-md focus:ring-2 outline-none transition-all ${error ? "border-red-500 focus:ring-red-100" : "border-gray-300 focus:ring-blue-100"
+                    }`}
             />
-            <button onClick={()=>console.log(ref?.current?.getValue())}/>
+            <button onClick={() => console.log(ref?.current?.getValue())} />
             <div className="min-h-[1.25rem] mt-1">
                 {error && (
                     <p className="text-xs text-red-500 font-medium animate-in fade-in slide-in-from-top-1">

@@ -1,5 +1,5 @@
-import {createContext, useCallback, useContext, useRef} from "react";
-import type {InputFieldRef} from "./InputField.tsx";
+import { createContext, useCallback, useContext, useRef } from "react";
+import type { InputFieldRef } from "./InputField.tsx";
 
 const FormContext = createContext<{
     registerField: (name: string, ref: InputFieldRef) => void;
@@ -17,11 +17,11 @@ const FormContext = createContext<{
 export const useFormRegistry = () => {
     const fieldRefs = useRef<Record<string, InputFieldRef>>({});
 
-    const registerField = useCallback((name, ref) => {
+    const registerField = useCallback((name: string, ref: InputFieldRef) => {
         fieldRefs.current[name] = ref;
     }, []);
 
-    const unregisterField = useCallback((name) => {
+    const unregisterField = useCallback((name: string) => {
         delete fieldRefs.current[name];
     }, []);
 

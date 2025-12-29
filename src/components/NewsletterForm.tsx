@@ -1,17 +1,27 @@
-import { type FormEvent, useRef } from "react";
+import { type FormEvent, useRef, useCallback } from "react";
 import { MoveRight } from "lucide-react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 export default function NewsletterForm() {
     // Refs for form
     const emailRef = useRef<HTMLInputElement>(null);
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
-    function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if (!executeRecaptcha) {
+            console.log("Execute recaptcha not yet available");
+            return;
+        }
+
+        const token = await executeRecaptcha('newsletter_submit');
+
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData.entries());
 
-        console.log("Sending", data);
-    }
+        console.log("Sending", { ...data, token });
+    }, [executeRecaptcha]);
 
     return (
         <form onSubmit={handleSubmit}>
