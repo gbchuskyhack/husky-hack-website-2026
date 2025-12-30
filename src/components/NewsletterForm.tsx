@@ -17,9 +17,11 @@ export default function NewsletterForm() {
 
         const token = await executeRecaptcha('newsletter_submit');
 
-        const formData = new FormData(e.currentTarget);
+        const formData = new FormData(e.target as HTMLFormElement);
         const data = Object.fromEntries(formData.entries());
 
+        // TODO: Send to backend 
+        // Create a service layer for this
         console.log("Sending", { ...data, token });
     }, [executeRecaptcha]);
 
