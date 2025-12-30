@@ -16,10 +16,8 @@ Deno.serve(async (req: Request) => {
   const raw: formData = await req.json()
 
   form.email = raw.email.trim().toLowerCase()
-  ;[form.firstName, form.lastName] = applyTitleCase([
-    raw.firstName,
-    raw.lastName,
-  ])
+  form.firstName = applyTitleCase(raw.firstName)
+  form.lastName = applyTitleCase(raw.lastName)
 
   const body = validateFormData(form)
 
