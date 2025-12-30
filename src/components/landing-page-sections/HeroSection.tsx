@@ -1,4 +1,5 @@
 import NewsletterForm from "../NewsletterForm";
+import SponsorContactLink from "../SponsorContactLink";
 
 export default function HeroSection() {
     return (
@@ -14,13 +15,7 @@ export default function HeroSection() {
 
             <NewsletterForm />
 
-            <p className="text-sm text-gray-600">
-                Interested in sponsoring?
-                <span> </span>
-                <a href="mailto:huskyhack.sponsor@gmail.com" className="underline">
-                    Contact us!
-                </a>
-            </p>
+            <SponsorContactLink />
         </div>
     );
 }
