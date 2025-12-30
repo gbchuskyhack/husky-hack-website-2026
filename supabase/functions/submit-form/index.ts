@@ -36,7 +36,7 @@ Deno.serve(async (req: Request) => {
 
   const supabase = createClient<Database>(
     Deno.env.get('SUPABASE_URL')!,
-    Deno.env.get('SUBMISSION_SECRET')!,
+    Deno.env.get('SUPABASE_SUBMISSION_SECRET')!,
   )
 
   const { error } = await supabase.from('users').insert({
