@@ -1,3 +1,5 @@
+"use client";
+
 import { type FormEvent, useRef, useCallback } from "react";
 import { MoveRight } from "lucide-react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";

@@ -1,4 +1,4 @@
-import NewsletterForm from "../NewsletterForm.tsx";
+import NewsletterForm from "../NewsletterForm";
 
 export default function HeroSection() {
     return (

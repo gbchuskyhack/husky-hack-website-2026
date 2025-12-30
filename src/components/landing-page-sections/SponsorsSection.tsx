@@ -1,4 +1,4 @@
-import SponsorLayout from "../sponsors/SponsorLayout.tsx";
+import SponsorLayout from "../sponsors/SponsorLayout";
 
 export default function SponsorsSection() {
     return (
