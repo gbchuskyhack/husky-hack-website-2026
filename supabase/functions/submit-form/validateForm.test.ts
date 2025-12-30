@@ -33,12 +33,13 @@ describe('validateFormData', () => {
 
       const expected: responseBody = {
         message: '',
-        error: { email: ['Not a valid email'] },
+        error: { email: ['Email format is invalid'] },
         data: {},
       }
       assertEquals(body, expected)
     })
   })
+
   it('adds an error to the name fields if they contain symbols', () => {
     const form: formData = {
       email: 'example@email.com.br',
@@ -51,13 +52,14 @@ describe('validateFormData', () => {
     const expected: responseBody = {
       message: '',
       error: {
-        firstName: ['Names should not contain symbols'],
-        lastName: ['Names should not contain symbols'],
+        firstName: ['Name contains invalid characters'],
+        lastName: ['Name contains invalid characters'],
       },
       data: {},
     }
     assertEquals(body, expected)
   })
+
   it('adds an error to each required field that is empty', () => {
     const form: formData = {
       email: '',
