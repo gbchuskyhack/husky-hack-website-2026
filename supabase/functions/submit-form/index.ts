@@ -4,6 +4,8 @@ import { createClient } from 'npm:@supabase/supabase-js'
 import { Database } from './databaseTypes.ts'
 import { applyTitleCase } from './util.ts'
 
+const PG_DUPLICATE_KEY_VIOLATION = '23505'
+
 const errorsWereSet = (body: responseBody): boolean =>
   Object.keys(body.error).length !== 0
 
@@ -45,7 +47,7 @@ Deno.serve(async (req: Request) => {
     last_name: form.lastName.length === 0 ? null : form.lastName,
   })
   if (error !== null) {
-    if (error.code === '23505') { // email is already registered
+    if (error.code === PG_DUPLICATE_KEY_VIOLATION) { // email is already registered
       console.log(error)
       return new Response(
         JSON.stringify(body),
