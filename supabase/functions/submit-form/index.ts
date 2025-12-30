@@ -49,6 +49,7 @@ Deno.serve(async (req: Request) => {
   if (error !== null) {
     if (error.code === PG_DUPLICATE_KEY_VIOLATION) { // email is already registered
       console.log(error)
+      body.message = 'This email is already registered'
       return new Response(
         JSON.stringify(body),
         {
@@ -56,7 +57,7 @@ Deno.serve(async (req: Request) => {
             'Content-Type': 'application/json',
             'Connection': 'keep-alive',
           },
-          status: 200,
+          status: 403,
         },
       )
     }
