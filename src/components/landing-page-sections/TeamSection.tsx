@@ -1,4 +1,6 @@
-import teams from "../../data/teams.tsx";
+"use client";
+
+import teams from "../../data/teams";
 import TeamMemberPhoto from "../team/TeamMemberPhoto";
 import { useState } from "react";
 

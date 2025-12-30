@@ -1,5 +1,7 @@
+"use client";
+
 import { useCallback, useContext, useEffect, useImperativeHandle, useState, type RefObject } from "react";
-import FormContext from "./FormContext.tsx";
+import FormContext from "./FormContext";
 
 export interface InputFieldRef {
     getValue: () => string;
