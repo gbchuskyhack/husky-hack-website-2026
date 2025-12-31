@@ -1,25 +1,19 @@
-import { formData, responseBody } from './model.ts'
+import { FormData, ResponseBody } from './model.ts'
 import validateFormData from './validateForm.ts'
 import { createClient } from 'npm:@supabase/supabase-js'
 import { Database } from './databaseTypes.ts'
-import { applyTitleCase } from './util.ts'
 
 const PG_DUPLICATE_KEY_VIOLATION = '23505'
 
-const errorsWereSet = (body: responseBody): boolean =>
-  Object.keys(body.error).length !== 0
+const errorsWereSet = (body: ResponseBody): boolean =>
+  Object.values(body.error).some((arr) => arr.length > 0)
 
 Deno.serve(async (req: Request) => {
-  const form: formData = {
-    email: '',
-    firstName: '',
-    lastName: '',
-  }
-  const raw: formData = await req.json()
+  const raw: FormData = await req.json()
 
-  form.email = raw.email.trim().toLowerCase()
-  form.firstName = applyTitleCase(raw.firstName)
-  form.lastName = applyTitleCase(raw.lastName)
+  const form: FormData = {
+    email: raw.email.trim().toLowerCase(),
+  }
 
   const body = validateFormData(form)
 
@@ -43,13 +37,13 @@ Deno.serve(async (req: Request) => {
 
   const { error } = await supabase.from('users').insert({
     email: form.email,
-    first_name: form.firstName.length === 0 ? null : form.firstName,
-    last_name: form.lastName.length === 0 ? null : form.lastName,
   })
+
   if (error !== null) {
     if (error.code === PG_DUPLICATE_KEY_VIOLATION) { // email is already registered
       console.log(error)
-      body.message = 'This email is already registered'
+      body.error.email.push('This email is already registered')
+      body.message = 'Please check the fields and try again'
       return new Response(
         JSON.stringify(body),
         {
@@ -75,6 +69,7 @@ Deno.serve(async (req: Request) => {
     )
   }
 
+  body.message = 'Thank you for signing up! We will notify you of any updates!'
   return new Response(
     JSON.stringify(body),
     {
