@@ -3,43 +3,61 @@
 import { type FormEvent, useRef, useCallback, useState } from "react";
 import { MoveRight } from "lucide-react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { subscribeToNewsletter } from "../services/newsletter";
+import {
+    type NewsletterResponseType,
+    subscribeToNewsletter,
+} from "../services/newsletter";
+import { InvokeResponse } from "../utils/supabase/edgeFunction";
+import FieldError from "./FieldError";
 
 export default function NewsletterForm() {
     const emailRef = useRef<HTMLInputElement>(null);
     const { executeRecaptcha } = useGoogleReCaptcha();
 
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [status, setStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
+    const [status, setStatus] = useState<InvokeResponse<NewsletterResponseType> | null>(null);
 
-    const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        
-        if (!executeRecaptcha) {
-            console.log("Execute recaptcha not yet available");
-            return;
-        }
+    const handleSubmit = useCallback(
+        async (e: FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
 
-        setIsSubmitting(true);
-        setStatus(null);
-
-        try {
-            const recaptchaToken = await executeRecaptcha('newsletter_submit');
-            const email = emailRef.current?.value;
-
-            await subscribeToNewsletter({ email, recaptchaToken });
-
-            setStatus({ type: 'success', message: 'We will notify you of any updates!' });
-            if (emailRef.current) {
-                emailRef.current.value = '';
+            if (!executeRecaptcha) {
+                console.log("Execute recaptcha not yet available");
+                return;
             }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
-        } finally {
-            setIsSubmitting(false);
-        }
-    }, [executeRecaptcha]);
+
+            setIsSubmitting(true);
+            setStatus(null);
+
+            try {
+                const recaptchaToken =
+                    await executeRecaptcha("newsletter_submit");
+                const email = emailRef.current?.value;
+
+                const response = await subscribeToNewsletter({
+                    email,
+                    recaptchaToken,
+                });
+
+                setStatus(response);
+
+                if (emailRef.current) {
+                    emailRef.current.value = "";
+                }
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                setStatus({
+                    message: "Something went wrong. Please try again.",
+                    data: null,
+                    type: "error",
+                    error: null,
+                });
+            } finally {
+                setIsSubmitting(false);
+            }
+        },
+        [executeRecaptcha],
+    );
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col gap-2">
@@ -74,11 +92,15 @@ export default function NewsletterForm() {
             </div>
 
             <div className="px-2">
-                {status && (
-                    <p className={`text-sm ${status.type === 'success' ? 'text-green-600' : 'text-red-500'}`}>
+                {status && (<>
+                    <FieldError status={status} fieldName="email" />
+
+                    <p
+                        className={`text-sm ${status.type === "success" ? "text-green-600" : "text-red-500"}`}
+                    >
                         {status.message}
                     </p>
-                )}
+                </>)}
             </div>
         </form>
     );
