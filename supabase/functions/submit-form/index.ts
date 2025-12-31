@@ -1,6 +1,6 @@
 import { FormData, ResponseBody } from './model.ts'
 import validateFormData from './validateForm.ts'
-import { createClient } from 'npm:@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js'
 import { Database } from './databaseTypes.ts'
 
 const PG_DUPLICATE_KEY_VIOLATION = '23505'

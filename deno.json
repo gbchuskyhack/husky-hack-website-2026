@@ -1,0 +1,4 @@
+{
+  "workspace": ["./supabase/functions/*"],
+  "lock": false
+}
