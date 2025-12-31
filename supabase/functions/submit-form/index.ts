@@ -4,6 +4,8 @@ import { createClient } from 'npm:@supabase/supabase-js'
 import { Database } from './databaseTypes.ts'
 import { applyTitleCase } from './util.ts'
 
+const PG_DUPLICATE_KEY_VIOLATION = '23505'
+
 const errorsWereSet = (body: responseBody): boolean =>
   Object.keys(body.error).length !== 0
 
@@ -16,10 +18,8 @@ Deno.serve(async (req: Request) => {
   const raw: formData = await req.json()
 
   form.email = raw.email.trim().toLowerCase()
-  ;[form.firstName, form.lastName] = applyTitleCase([
-    raw.firstName,
-    raw.lastName,
-  ])
+  form.firstName = applyTitleCase(raw.firstName)
+  form.lastName = applyTitleCase(raw.lastName)
 
   const body = validateFormData(form)
 
@@ -38,7 +38,7 @@ Deno.serve(async (req: Request) => {
 
   const supabase = createClient<Database>(
     Deno.env.get('SUPABASE_URL')!,
-    Deno.env.get('SUBMISSION_SECRET')!,
+    Deno.env.get('SB_SUBMISSION_SECRET')!,
   )
 
   const { error } = await supabase.from('users').insert({
@@ -47,8 +47,9 @@ Deno.serve(async (req: Request) => {
     last_name: form.lastName.length === 0 ? null : form.lastName,
   })
   if (error !== null) {
-    if (error.code === '23505') { // email is already registered
+    if (error.code === PG_DUPLICATE_KEY_VIOLATION) { // email is already registered
       console.log(error)
+      body.message = 'This email is already registered'
       return new Response(
         JSON.stringify(body),
         {
@@ -56,7 +57,7 @@ Deno.serve(async (req: Request) => {
             'Content-Type': 'application/json',
             'Connection': 'keep-alive',
           },
-          status: 200,
+          status: 403,
         },
       )
     }

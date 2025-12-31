@@ -1,4 +1,4 @@
-import Accordion from "../FAQ/Accordian";
+import Accordion from "../faq/Accordian";
 
 export default function FAQSection() {
     return (

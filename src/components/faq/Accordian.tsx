@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 
 type AccordionProps = {
@@ -32,29 +34,26 @@ function Accordion({ title, answer }: AccordionProps) {
             width="16"
             height="2"
             rx="1"
-            className={`transform origin-center transition duration-200 ${
-              accordionOpen ? "rotate-180" : ""
-            }`}
+            className={`transform origin-center transition duration-200 ${accordionOpen ? "rotate-180" : ""
+              }`}
           />
           <rect
             y="7"
             width="16"
             height="2"
             rx="1"
-            className={`transform origin-center rotate-90 transition duration-200 ${
-              accordionOpen ? "rotate-180" : ""
-            }`}
+            className={`transform origin-center rotate-90 transition duration-200 ${accordionOpen ? "rotate-180" : ""
+              }`}
           />
         </svg>
       </button>
 
       {/* Answer */}
       <div
-        className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
-          accordionOpen
+        className={`grid overflow-hidden transition-all duration-300 ease-in-out ${accordionOpen
             ? "grid-rows-[1fr] opacity-100 mt-3"
             : "grid-rows-[0fr] opacity-0"
-        }`}
+          }`}
       >
         <div className="overflow-hidden text-gray-300 text-sm leading-relaxed">
           {answer}

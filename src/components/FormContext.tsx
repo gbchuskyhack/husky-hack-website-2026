@@ -1,5 +1,7 @@
 import { createContext, useCallback, useContext, useRef } from "react";
-import type { InputFieldRef } from "./InputField.tsx";
+"use client";
+
+import type { InputFieldRef } from "./InputField";
 
 const FormContext = createContext<{
     registerField: (name: string, ref: InputFieldRef) => void;

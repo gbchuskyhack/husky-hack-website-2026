@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Executive Team",
+        "keywords": ["President"]
+    },
+    {
+        "title": "Logistics & Finance",
+        "keywords": ["Logistic", "Finance"]
+    },
+    {
+        "title": "Marketing & Outreach",
+        "keywords": ["Marketing", "Outreach"]
+    },
+    {
+        "title": "Designers",
+        "keywords": ["Design"]
+    },
+    {
+        "title": "Developers",
+        "keywords": ["Developer"]
+    },
+    {
+        "title": "Advisors",
+        "keywords": ["Advisor"]
+    }
+]

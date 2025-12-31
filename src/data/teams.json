@@ -2,9 +2,9 @@
     {
         "displayName": "Sokmontrey Sythat",
         "socialLink": "https://sokmontrey.me",
-        "position": "Co-President",
-        "mainProfilePicturePath": "",
-        "secondaryProfilePicturePath": ""
+        "position": "President",
+        "mainProfilePicturePath": "/team-profiles/sokmontrey.jpeg",
+        "secondaryProfilePicturePath": "/team-profiles/sokmontrey-alt.JPG"
     },
     {
         "displayName": "Karina Vetlugina",
@@ -154,11 +154,11 @@
         "secondaryProfilePicturePath": ""
     },
     {
-        "displayName": "Ciao Cotts",
+        "displayName": "Caio Cotts",
         "socialLink": "",
         "position": "Developer - Backend",
-        "mainProfilePicturePath": "",
-        "secondaryProfilePicturePath": ""
+        "mainProfilePicturePath": "/team-profiles/caio-cotts.jpg",
+        "secondaryProfilePicturePath": "/team-profiles/caio-cotts-alt.jpg"
     },
     {
         "displayName": "Keagan Cameron",
@@ -185,13 +185,6 @@
         "displayName": "Nirja Arun Dahbi",
         "socialLink": "",
         "position": "Developer - Backend",
-        "mainProfilePicturePath": "",
-        "secondaryProfilePicturePath": ""
-    },
-    {
-        "displayName": "Andrew Rudder",
-        "socialLink": "",
-        "position": "Advisor",
         "mainProfilePicturePath": "",
         "secondaryProfilePicturePath": ""
     },

@@ -4,6 +4,7 @@ import AboutUsSection from "./components/landing-page-sections/AboutUsSection";
 import SponsorsSection from "./components/landing-page-sections/SponsorsSection";
 import FAQSection from "./components/landing-page-sections/FAQSection";
 import TeamSection from "./components/landing-page-sections/TeamSection";
+import FooterSection from "./components/landing-page-sections/FooterSection";
 import ContactSection from "./components/landing-page-sections/ContactSection.tsx";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
             {/* Contact Section */}
             <ContactSection/>
             {/* Footer */}
+            <FooterSection />
         </>
     )
 }
