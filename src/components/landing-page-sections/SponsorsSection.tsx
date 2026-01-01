@@ -9,7 +9,7 @@ export default function SponsorsSection() {
                     Our Sponsors
                 </h1>
 
-                <div className="flex justify-center min-h-[30vh]">
+                <div className="flex justify-center">
                     <SponsorLayout />
                 </div>
                 
