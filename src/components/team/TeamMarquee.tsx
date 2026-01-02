@@ -47,7 +47,7 @@ export default function TeamMarquee({ teams }: { teams: Team[] }) {
         );
 
     return (
-        <div className="relative w-full mb-8">
+        <div className="relative w-full mb-8 overflow-y-hidden pb-24 pt-2 overflow-x-hidden">
             <div
                 className="flex animate-scroll hover:[animation-play-state:paused] w-max"
             >
