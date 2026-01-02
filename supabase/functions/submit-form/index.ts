@@ -1,12 +1,12 @@
-import { FormData, ResponseBody } from './model.ts'
+import { FormData, FormValidationResult } from './model.ts'
 import validateFormData from './validateForm.ts'
 import { createClient } from '@supabase/supabase-js'
 import { Database } from './databaseTypes.ts'
 
 const PG_DUPLICATE_KEY_VIOLATION = '23505'
 
-const errorsWereSet = (body: ResponseBody): boolean =>
-  Object.values(body.error).some((arr) => arr.length > 0)
+const errorsWereSet = (body: FormValidationResult): boolean =>
+  Object.values(body.error).some((errors) => errors.length > 0) // after
 
 Deno.serve(async (req: Request) => {
   const raw: FormData = await req.json()
