@@ -382,4 +382,13 @@ s3_access_key = "env(S3_ACCESS_KEY)"
 s3_secret_key = "env(S3_SECRET_KEY)"
 
 [functions.submit-form]
+enabled = true
 verify_jwt = false
+import_map = "./functions/submit-form/deno.json"
+entrypoint = "./functions/submit-form/index.ts"
+
+[functions.captcha-validator]
+enabled = true
+verify_jwt = false
+import_map = "./functions/captcha-validator/deno.json"
+entrypoint = "./functions/captcha-validator/index.ts"
