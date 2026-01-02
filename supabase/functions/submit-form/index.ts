@@ -5,10 +5,12 @@ import { Database } from './databaseTypes.ts'
 import { createResponse } from './util.ts'
 
 const PG_DUPLICATE_KEY_VIOLATION = '23505'
+const CAPTCHA_ENDPOINT = new URL(Deno.env.get('SB_CAPTCHA_VALIDATOR_ENDPOINT')!)
 
 const HttpStatus = Object.freeze({
   OK: 200,
   BAD_REQUEST: 400,
+  FORBIDDEN: 403,
   CONFLICT: 409,
   INTERNAL_SERVER_ERROR: 500,
 })
@@ -18,6 +20,23 @@ const errorsWereSet = (body: FormValidationResult): boolean =>
 
 Deno.serve(async (req: Request) => {
   let raw: FormData | null
+
+  // console.log(req.headers.get('x-recaptcha-token'))
+
+  if (req.headers.get('x-recaptcha-token') === null) {
+    const body: FormValidationResult = {
+      message: 'Missing recaptcha token',
+      data: {},
+      error: { email: [] },
+    }
+    return createResponse(body, HttpStatus.FORBIDDEN)
+  }
+
+  fetch(
+    new Request(CAPTCHA_ENDPOINT, {
+      method: 'POST',
+    }),
+  )
 
   try {
     raw = await req.json()
