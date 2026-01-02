@@ -16,14 +16,13 @@ const HttpStatus = Object.freeze({
 })
 
 const errorsWereSet = (body: FormValidationResult): boolean =>
-  Object.values(body.error).some((errors) => errors.length > 0) // after
+  Object.values(body.error).some((errors) => errors.length > 0)
 
 Deno.serve(async (req: Request) => {
   let raw: FormData | null
 
-  // console.log(req.headers.get('x-recaptcha-token'))
-
-  if (req.headers.get('x-recaptcha-token') === null) {
+  const captchaToken = req.headers.get('x-recaptcha-token')
+  if (captchaToken === null) {
     const body: FormValidationResult = {
       message: 'Missing recaptcha token',
       data: {},
@@ -32,11 +31,22 @@ Deno.serve(async (req: Request) => {
     return createResponse(body, HttpStatus.FORBIDDEN)
   }
 
-  fetch(
+  const captchaResult = await fetch(
     new Request(CAPTCHA_ENDPOINT, {
       method: 'POST',
+      headers: {
+        'x-recaptcha-token': captchaToken,
+      },
     }),
   )
+  if (!captchaResult.success) {
+    const body: FormValidationResult = {
+      message: 'Failed recaptcha verification',
+      data: {},
+      error: { email: [] },
+    }
+    return createResponse(body, HttpStatus.FORBIDDEN)
+  }
 
   try {
     raw = await req.json()
