@@ -9,10 +9,10 @@ export default function FooterSection() {
 
     useEffect(() => {
         const updateViewBox = () => {
-             if (textRef.current) {
-                 const bbox = textRef.current.getBBox();
-                 setViewBox(`${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
-             }
+            if (textRef.current) {
+                const bbox = textRef.current.getBBox();
+                setViewBox(`${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
+            }
         };
 
         updateViewBox();
@@ -30,7 +30,7 @@ export default function FooterSection() {
                     </div> */}
                     <div>
                         <p className="text-gray-600 font-sans">
-                            Built with love, sweat, and <br />tears by the <span className="font-serif text-2xl">HuskyHack</span> team.
+                            Built with love, sweat, and <br />tears by the <span className="font-serif text-2xl text-gray-900">HuskyHack</span> team.
                         </p>
                         <p className="text-gray-600 font-sans">© {new Date().getFullYear()} HuskyHack</p>
                     </div>
@@ -67,10 +67,10 @@ export default function FooterSection() {
                     <h3 className="text-2xl font-serif mt-4 mb-1 md:mt-0">
                         Contact
                     </h3>
-                    <a href="/support" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <a href="/contact?query=support" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                         Support
                     </a>
-                    <a href="/sponsorship-partnerships" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <a href="/contact?query=sponsorship-partnerships" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                         Sponsorship & Partnerships
                     </a>
                 </div>

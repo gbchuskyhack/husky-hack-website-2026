@@ -2,7 +2,11 @@
 import {BookOpen, MessageSquare, MoveRight, User} from 'lucide-react';
 import {useState} from "react";
 
-export default function ContactSection() {
+interface ContactSectionProps {
+    query: string;
+}
+
+export default function ContactSection({query}: ContactSectionProps) {
     const [isHovered, setIsHovered] = useState(false)
 
     function handleSubmit(e) {
@@ -10,20 +14,21 @@ export default function ContactSection() {
 
         const form = e.target;
 
-        const name = form.name.value;
         const subject = form.subject.value;
         const body = form.body.value;
 
-        const recipientEmail = "fidaawsaf@gmail.com";
+        const recipientEmail = query === "sponsorship"
+            ? "huskyhack.sponsorship@gmail.com"
+            : "huskyhack.info@gmail.com";
 
         const gmailUrl =
             "https://mail.google.com/mail/?" +
             "view=cm&fs=1&tf=1" +
             `&to=${encodeURIComponent(recipientEmail)}` +
             `&su=${encodeURIComponent(subject)}` +
-            `&body=${encodeURIComponent(`From: ${name}\n\n${body}`)}`;
+            `&body=${encodeURIComponent(`${body}`)}`;
 
-        window.open(gmailUrl, "_blank");
+        globalThis.open(gmailUrl, "_blank");
     }
 
 
@@ -37,21 +42,8 @@ export default function ContactSection() {
                     </header>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        {/* Name & Subject Row */}
+                        {/* Subject Row */}
                         <div className="flex flex-col md:flex-col gap-4">
-                            {/* Name */}
-                            <div
-                                className="flex items-center gap-2 flex-1 rounded-full bg-gray-100 p-2 pl-4 focus-within:bg-gray-200 transition-colors">
-                                <User size={18} className="text-gray-400"/>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    required
-                                    placeholder="Full Name"
-                                    className="bg-transparent p-2 pr-4 flex-1 focus:outline-none text-gray-700 placeholder:text-gray-400"
-                                />
-                            </div>
-
                             {/* Subject */}
                             <div
                                 className="flex items-center gap-2 flex-1 rounded-full bg-gray-100 p-2 pl-4 focus-within:bg-gray-200 transition-colors">
