@@ -1,12 +1,12 @@
-import { formData, responseBody } from './model.ts'
-import { isEmailValid, isNameValid } from './util.ts'
+import { FormData, FormValidationResult } from './model.ts'
+import { isEmailValid } from './util.ts'
 
-const validateFormData = (form: formData): responseBody => {
-  const body: responseBody = {
+const validateFormData = (form: FormData): FormValidationResult => {
+  const body: FormValidationResult = {
     message: '',
     data: {},
     error: {
-      email: []
+      email: [],
     },
   }
 

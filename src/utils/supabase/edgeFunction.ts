@@ -15,7 +15,8 @@ export type InvokeResponse<TError> = {
 export async function invokeFunction<TRequest, TError>(
     functionName: string,
     errorSchema: z.ZodType<TError>, 
-    body: TRequest
+    body: TRequest,
+    recaptchaToken: string
 ): Promise<InvokeResponse<TError>> {
 
     const ResponseSchema = z.object({
@@ -27,6 +28,9 @@ export async function invokeFunction<TRequest, TError>(
 
     const { data, error } = await supabase.functions.invoke(functionName, {
         body,
+        headers: {
+            "X-Recaptcha-Token": recaptchaToken,
+        },
     });
 
     if (error instanceof FunctionsHttpError) {
@@ -62,4 +66,22 @@ export async function invokeFunction<TRequest, TError>(
     }
 
     return { ...data, type: "success" };
+}
+
+export function validateRequest<T>(
+    schema: z.ZodType<T>,
+    data: unknown
+): InvokeResponse<z.inferFlattenedErrors<typeof schema>["fieldErrors"]> | null {
+    const result = schema.safeParse(data);
+
+    if (!result.success) {
+        return {
+            message: "Something went wrong. Please try again.",
+            data: {},
+            type: "error",
+            error: result.error.flatten().fieldErrors,
+        };
+    }
+
+    return null;
 }

@@ -2,7 +2,7 @@ type FormData = {
   email: string
 }
 
-type ResponseBody = {
+type FormValidationResult = {
   message: string
   data: object
   error: {
@@ -10,4 +10,4 @@ type ResponseBody = {
   }
 }
 
-export type { FormData, ResponseBody }
+export type { FormData, FormValidationResult }
