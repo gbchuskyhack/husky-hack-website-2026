@@ -19,7 +19,7 @@ export default function TeamMarquee({ teams }: { teams: Team[] }) {
 
     // Team title before each group of members
     const createTeamTitle = (title: string, index: number) => 
-        <div key={'title-' + index} className="flex flex-col items-center justify-center px-5">
+        <div key={'title-' + index} className="h-16 md:h-20 flex flex-col justify-center px-5">
             <h2 className="text-2xl font-serif">{title}</h2>
         </div>;
 
@@ -38,7 +38,7 @@ export default function TeamMarquee({ teams }: { teams: Team[] }) {
                         className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover transition-transform duration-150 group-hover:scale-110"
                     />
                     {/* Pop up profile info */}
-                    <div className="absolute top-full mt-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-150 w-48 pointer-events-none z-20">
+                    <div className="top-full mt-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-150 w-48 pointer-events-none z-20">
                         <h3 className="font-serif text-xl text-gray-900">{member.displayName}</h3>
                         <p className="text-xs font-sans text-gray-600">{member.position}</p>
                     </div>
@@ -47,7 +47,7 @@ export default function TeamMarquee({ teams }: { teams: Team[] }) {
         );
 
     return (
-        <div className="relative w-full mb-8 overflow-y-hidden pb-24 pt-2 overflow-x-hidden">
+        <div className="flex flex-row items-center w-full mb-8 pt-2 overflow-x-hidden">
             <div
                 className="flex animate-scroll hover:[animation-play-state:paused] w-max"
             >

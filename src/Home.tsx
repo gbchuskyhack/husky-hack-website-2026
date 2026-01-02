@@ -18,7 +18,7 @@ export default function Home() {
             <FAQSection />
             <TeamSection />
             {/* Contact Section */}
-            <ContactSection/>
+            {/* <ContactSection/> */}
             {/* Footer */}
             <FooterSection />
         </>
