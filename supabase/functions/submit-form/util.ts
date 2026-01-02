@@ -22,4 +22,16 @@ const isNameValid = (name: string): boolean => /^[a-zA-Z\s'-]+$/.test(name)
 const isEmailValid = (email: string): boolean =>
   /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(email)
 
-export { applyTitleCase, isEmailValid, isNameValid }
+const createResponse = (body: object, status: number): Response =>
+  new Response(
+    JSON.stringify(body),
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Connection': 'keep-alive',
+      },
+      status: status,
+    },
+  )
+
+export { applyTitleCase, createResponse, isEmailValid, isNameValid }
