@@ -67,10 +67,10 @@ export default function FooterSection() {
                     <h3 className="text-2xl font-serif mt-4 mb-1 md:mt-0">
                         Contact
                     </h3>
-                    <a href="/contact?query=support" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <a href="/contact?query=support" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                         Support
                     </a>
-                    <a href="/contact?query=sponsorship-partnerships" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <a href="/contact?query=sponsorship" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                         Sponsorship & Partnerships
                     </a>
                 </div>
