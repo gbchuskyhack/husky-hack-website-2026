@@ -5,7 +5,7 @@ import Star1 from "../scribbles/Star1";
 
 export default function AboutUsSection() {
     return (
-        <div className="flex flex-row justify-center md:justify-center w-full">
+        <div className="flex flex-row justify-center md:justify-center w-full mb-20">
             <div
                 id="About-Us"
                 className="py-10 px-6 md:px-12 flex flex-col md:flex-row items-center gap-8 md:gap-12"
