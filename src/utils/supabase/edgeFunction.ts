@@ -48,12 +48,12 @@ export async function invokeFunction<TRequest, TError>(
             };
         }
 
-    return {
-        message: result.data.message || "Something went wrong.",
-        type: "error",
-        error: result.data.error, 
-        data: result.data.data,
-    };
+        return {
+            message: result.data.message || "Something went wrong.",
+            type: "error",
+            error: result.data.error, 
+            data: result.data.data,
+        };
     } 
 
     if (error instanceof FunctionsRelayError) {
