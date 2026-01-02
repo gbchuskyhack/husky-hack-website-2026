@@ -9,10 +9,35 @@ const errorsWereSet = (body: FormValidationResult): boolean =>
   Object.values(body.error).some((errors) => errors.length > 0) // after
 
 Deno.serve(async (req: Request) => {
-  const raw: FormData = await req.json()
+  let raw: FormData | null
+
+  try {
+    raw = await req.json()
+  } catch (e) {
+    const body: FormValidationResult = {
+      message: '',
+      data: {},
+      error: { email: [] },
+    }
+    if (e instanceof SyntaxError) {
+      body.message = `Malformed json: ${e.message}`
+    } else {
+      body.message = `${e}`
+    }
+    return new Response(
+      JSON.stringify(body),
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Connection': 'keep-alive',
+        },
+        status: 400,
+      },
+    )
+  }
 
   const form: FormData = {
-    email: raw.email.trim().toLowerCase(),
+    email: raw!.email.trim().toLowerCase(),
   }
 
   const body = validateFormData(form)
