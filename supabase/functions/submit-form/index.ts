@@ -6,6 +6,13 @@ import { createResponse } from './util.ts'
 
 const PG_DUPLICATE_KEY_VIOLATION = '23505'
 
+const HttpStatus = Object.freeze({
+  OK: 200,
+  BAD_REQUEST: 400,
+  CONFLICT: 409,
+  INTERNAL_SERVER_ERROR: 500,
+})
+
 const errorsWereSet = (body: FormValidationResult): boolean =>
   Object.values(body.error).some((errors) => errors.length > 0) // after
 
@@ -22,11 +29,11 @@ Deno.serve(async (req: Request) => {
     }
     let statusCode: number | null
     if (e instanceof SyntaxError) {
-      statusCode = 400
+      statusCode = HttpStatus.BAD_REQUEST
       body.message = `Malformed json: ${e.message}`
     } else if (e instanceof TypeError) {
       body.message = `Invalid request: ${e.message}`
-      statusCode = 500
+      statusCode = HttpStatus.INTERNAL_SERVER_ERROR
     }
     return createResponse(body, statusCode!)
   }
@@ -37,7 +44,7 @@ Deno.serve(async (req: Request) => {
 
   const body = validateFormData(form)
 
-  if (errorsWereSet(body)) return createResponse(body, 400)
+  if (errorsWereSet(body)) return createResponse(body, HttpStatus.BAD_REQUEST)
 
   const supabase = createClient<Database>(
     Deno.env.get('SUPABASE_URL')!,
@@ -52,13 +59,13 @@ Deno.serve(async (req: Request) => {
     console.log(error)
     body.error.email.push('This email is already registered')
     body.message = 'Please check the fields and try again'
-    return createResponse(body, 403)
+    return createResponse(body, HttpStatus.CONFLICT)
   } else if (error !== null) {
     console.log(error)
     body.message = 'Something went wrong. Unable to fulfill request'
-    return createResponse(body, 500)
+    return createResponse(body, HttpStatus.INTERNAL_SERVER_ERROR)
   }
 
   body.message = 'Thank you for signing up! We will notify you of any updates!'
-  return createResponse(body, 200)
+  return createResponse(body, HttpStatus.OK)
 })
