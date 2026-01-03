@@ -15,7 +15,7 @@ const chivoMono = Chivo_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Husky Hack Website 2026",
+    title: "HuskyHack",
     description: "Husky Hack 2026",
 };
 
