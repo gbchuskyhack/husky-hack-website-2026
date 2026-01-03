@@ -39,7 +39,7 @@ Deno.serve(async (req: Request) => {
       },
     }),
   )
-  if (!captchaResult.success) {
+  if (captchaResult.success === false) {
     const body: FormValidationResult = {
       message: 'Failed recaptcha verification',
       data: {},
