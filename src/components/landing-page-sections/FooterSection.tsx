@@ -35,13 +35,13 @@ export default function FooterSection() {
                         <p className="text-gray-600 font-sans">© {new Date().getFullYear()} HuskyHack</p>
                     </div>
                     <div className="flex flex-row gap-4 mt-5">
-                        <a href="/404" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        <a href="/construction" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                             <HugeiconsIcon icon={DiscordIcon} size={24} />
                         </a>
-                        <a href="/404" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        <a href="/construction" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                             <HugeiconsIcon icon={Linkedin01Icon} size={24} />
                         </a>
-                        <a href="/404" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        <a href="/construction" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                             <HugeiconsIcon icon={InstagramIcon} size={24} />
                         </a>
                     </div>
@@ -78,10 +78,10 @@ export default function FooterSection() {
                     <h3 className="text-2xl font-serif mt-4 mb-1 md:mt-0">
                         Resources
                     </h3>
-                    <a href="/404" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <a href="/construction" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                         Code of Conduct
                     </a>
-                    <a href="/404" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <a href="/construction" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                         Privacy Policy
                     </a>
                 </div>
