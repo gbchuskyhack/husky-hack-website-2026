@@ -4,7 +4,12 @@ export default {
         "./src/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                serif: ["var(--font-vt323)", "serif"],
+                mono: ["var(--font-chivo-mono)", "monospace"],
+            },
+        },
     },
     plugins: [],
 };

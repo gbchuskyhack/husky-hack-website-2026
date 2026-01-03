@@ -2,9 +2,9 @@
     {
         "displayName": "Sokmontrey Sythat",
         "socialLink": "https://sokmontrey.me",
-        "position": "President",
-        "mainProfilePicturePath": "/team-profiles/sokmontrey.jpeg",
-        "secondaryProfilePicturePath": "/team-profiles/sokmontrey-alt.JPG"
+        "position": "Co-President",
+        "mainProfilePicturePath": "/team-profiles/montrey.jpeg",
+        "secondaryProfilePicturePath": "/team-profiles/montrey-alt.JPG"
     },
     {
         "displayName": "Karina Vetlugina",
@@ -24,8 +24,8 @@
         "displayName": "Sakshat Garg",
         "socialLink": "",
         "position": "Logistic Lead & Developer",
-        "mainProfilePicturePath": "",
-        "secondaryProfilePicturePath": ""
+        "mainProfilePicturePath": "/team-profiles/sakshat.jpeg",
+        "secondaryProfilePicturePath": "/team-profiles/sakshat-alt.jpeg"
     },
     {
         "displayName": "Mudit",
@@ -45,8 +45,8 @@
         "displayName": "Mansi",
         "socialLink": "",
         "position": "Design Lead",
-        "mainProfilePicturePath": "",
-        "secondaryProfilePicturePath": ""
+        "mainProfilePicturePath": "/team-profiles/mansi.jpeg",
+        "secondaryProfilePicturePath": "/team-profiles/mansi-alt.jpeg"
     },
     {
         "displayName": "Evelyn Luu",
@@ -63,11 +63,11 @@
         "secondaryProfilePicturePath": ""
     },
     {
-        "displayName": "Rizmari",
-        "socialLink": "",
+        "displayName": "Rizmari Arrogante",
+        "socialLink": "https://www.linkedin.com/in/rizmari-arrogante",
         "position": "Design",
-        "mainProfilePicturePath": "",
-        "secondaryProfilePicturePath": ""
+        "mainProfilePicturePath": "/team-profiles/rizmari.jpeg",
+        "secondaryProfilePicturePath": "/team-profiles/rizmari-alt.jpeg"
     },
     {
         "displayName": "Kai",
@@ -78,10 +78,10 @@
     },
     {
         "displayName": "Horasha Smith",
-        "socialLink": "",
+        "socialLink": "https://www.instagram.com/94thintellect",
         "position": "Design",
-        "mainProfilePicturePath": "",
-        "secondaryProfilePicturePath": ""
+        "mainProfilePicturePath": "/team-profiles/horasha.jpeg",
+        "secondaryProfilePicturePath": "/team-profiles/horasha-alt.jpeg"
     },
     {
         "displayName": "Gaya Khiani",
@@ -121,16 +121,16 @@
     {
         "displayName": "Leonard Eriyo",
         "socialLink": "",
-        "position": "Outreach",
+        "position": "Outreach Lead",
         "mainProfilePicturePath": "",
         "secondaryProfilePicturePath": ""
     },
     {
-        "displayName": "Awsaf",
-        "socialLink": "",
+        "displayName": "Awsaf Fida Mahmud",
+        "socialLink": "https://www.afmahmud.dev",
         "position": "Lead Developer - Frontend",
-        "mainProfilePicturePath": "",
-        "secondaryProfilePicturePath": ""
+        "mainProfilePicturePath": "/team-profiles/awsaf.jpg",
+        "secondaryProfilePicturePath": "/team-profiles/awsaf-alt.jpg"
     },
     {
         "displayName": "Alfred Ranz Navarro",
@@ -155,10 +155,10 @@
     },
     {
         "displayName": "Caio Cotts",
-        "socialLink": "",
+        "socialLink": "https://caiocotts.com/",
         "position": "Developer - Backend",
-        "mainProfilePicturePath": "/team-profiles/caio-cotts.jpg",
-        "secondaryProfilePicturePath": "/team-profiles/caio-cotts-alt.jpg"
+        "mainProfilePicturePath": "/team-profiles/caio.jpg",
+        "secondaryProfilePicturePath": "/team-profiles/caio-alt.jpg"
     },
     {
         "displayName": "Keagan Cameron",

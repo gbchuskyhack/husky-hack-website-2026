@@ -1,40 +1,79 @@
-import { formData, responseBody } from './model.ts'
+import { FormData, FormValidationResult } from './model.ts'
 import validateFormData from './validateForm.ts'
-import { createClient } from 'npm:@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js'
 import { Database } from './databaseTypes.ts'
-import { applyTitleCase } from './util.ts'
+import { createResponse } from './util.ts'
 
 const PG_DUPLICATE_KEY_VIOLATION = '23505'
+const CAPTCHA_ENDPOINT = new URL(Deno.env.get('SB_CAPTCHA_VALIDATOR_ENDPOINT')!)
 
-const errorsWereSet = (body: responseBody): boolean =>
-  Object.keys(body.error).length !== 0
+const HttpStatus = Object.freeze({
+  OK: 200,
+  BAD_REQUEST: 400,
+  FORBIDDEN: 403,
+  CONFLICT: 409,
+  INTERNAL_SERVER_ERROR: 500,
+})
+
+const errorsWereSet = (body: FormValidationResult): boolean =>
+  Object.values(body.error).some((errors) => errors.length > 0)
 
 Deno.serve(async (req: Request) => {
-  const form: formData = {
-    email: '',
-    firstName: '',
-    lastName: '',
-  }
-  const raw: formData = await req.json()
+  let raw: FormData | null
 
-  form.email = raw.email.trim().toLowerCase()
-  form.firstName = applyTitleCase(raw.firstName)
-  form.lastName = applyTitleCase(raw.lastName)
+  const captchaToken = req.headers.get('x-recaptcha-token')
+  if (captchaToken === null) {
+    const body: FormValidationResult = {
+      message: 'Missing recaptcha token',
+      data: {},
+      error: { email: [] },
+    }
+    return createResponse(body, HttpStatus.FORBIDDEN)
+  }
+
+  const captchaResult = await fetch(
+    new Request(CAPTCHA_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'x-recaptcha-token': captchaToken,
+      },
+    }),
+  )
+  if (captchaResult.success === false) {
+    const body: FormValidationResult = {
+      message: 'Failed recaptcha verification',
+      data: {},
+      error: { email: [] },
+    }
+    return createResponse(body, HttpStatus.FORBIDDEN)
+  }
+
+  try {
+    raw = await req.json()
+  } catch (e) {
+    const body: FormValidationResult = {
+      message: '',
+      data: {},
+      error: { email: [] },
+    }
+    let statusCode: number | null
+    if (e instanceof SyntaxError) {
+      statusCode = HttpStatus.BAD_REQUEST
+      body.message = `Malformed json: ${e.message}`
+    } else if (e instanceof TypeError) {
+      body.message = `Invalid request: ${e.message}`
+      statusCode = HttpStatus.INTERNAL_SERVER_ERROR
+    }
+    return createResponse(body, statusCode!)
+  }
+
+  const form: FormData = {
+    email: raw!.email.trim().toLowerCase(),
+  }
 
   const body = validateFormData(form)
 
-  if (errorsWereSet(body)) {
-    return new Response(
-      JSON.stringify(body),
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Connection': 'keep-alive',
-        },
-        status: 400,
-      },
-    )
-  }
+  if (errorsWereSet(body)) return createResponse(body, HttpStatus.BAD_REQUEST)
 
   const supabase = createClient<Database>(
     Deno.env.get('SUPABASE_URL')!,
@@ -43,46 +82,19 @@ Deno.serve(async (req: Request) => {
 
   const { error } = await supabase.from('users').insert({
     email: form.email,
-    first_name: form.firstName.length === 0 ? null : form.firstName,
-    last_name: form.lastName.length === 0 ? null : form.lastName,
   })
-  if (error !== null) {
-    if (error.code === PG_DUPLICATE_KEY_VIOLATION) { // email is already registered
-      console.log(error)
-      body.message = 'This email is already registered'
-      return new Response(
-        JSON.stringify(body),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Connection': 'keep-alive',
-          },
-          status: 403,
-        },
-      )
-    }
+
+  if (error?.code === PG_DUPLICATE_KEY_VIOLATION) { // email is already registered
+    console.log(error)
+    body.error.email.push('This email is already registered')
+    body.message = 'Please check the fields and try again'
+    return createResponse(body, HttpStatus.CONFLICT)
+  } else if (error !== null) {
     console.log(error)
     body.message = 'Something went wrong. Unable to fulfill request'
-    return new Response(
-      JSON.stringify(body),
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Connection': 'keep-alive',
-        },
-        status: 500,
-      },
-    )
+    return createResponse(body, HttpStatus.INTERNAL_SERVER_ERROR)
   }
 
-  return new Response(
-    JSON.stringify(body),
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        'Connection': 'keep-alive',
-      },
-      status: 200,
-    },
-  )
+  body.message = 'Thank you for signing up! We will notify you of any updates!'
+  return createResponse(body, HttpStatus.OK)
 })

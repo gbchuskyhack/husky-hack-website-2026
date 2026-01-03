@@ -1,25 +1,25 @@
-import { supabase } from "../utils/supabase/client";
+import { z } from "zod";
+import { invokeFunction, InvokeResponse, validateRequest } from "../utils/supabase/edgeFunction";
 
-interface NewsletterSubmission {
-    email: string;
-    recaptchaToken: string;
-    firstName?: string;
-    lastName?: string;
-}
+const NewsletterRequest = z.object({
+    email: z.email(),
+});
 
-export const subscribeToNewsletter = async ({ email, recaptchaToken, firstName = "", lastName = "" }: NewsletterSubmission) => {
-    const { data, error } = await supabase.functions.invoke('submit-form', {
-        body: {
-            email,
-            firstName,
-            lastName,
-            recaptchaToken,
-        },
-    });
+const NewsletterResponse = z.object({
+    email: z.array(z.string()).optional(),
+});
 
-    if (error) {
-        throw error;
-    }
+export type NewsletterRequestType = z.infer<typeof NewsletterRequest>;
+export type NewsletterResponseType = z.infer<typeof NewsletterResponse>;
 
-    return data;
+export const subscribeToNewsletter = async (body: NewsletterRequestType, recaptchaToken: string): Promise<InvokeResponse<NewsletterResponseType>> => {
+    const validationError = validateRequest(NewsletterRequest, body);
+    if (validationError) return validationError;
+
+    return await invokeFunction<NewsletterRequestType, NewsletterResponseType>(
+        'submit-form', 
+        NewsletterResponse, 
+        body,
+        recaptchaToken
+    );
 };

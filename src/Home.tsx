@@ -6,21 +6,22 @@ import FAQSection from "./components/landing-page-sections/FAQSection";
 import TeamSection from "./components/landing-page-sections/TeamSection";
 import FooterSection from "./components/landing-page-sections/FooterSection";
 import ContactSection from "./components/landing-page-sections/ContactSection";
+import ScheduleSection from "./components/landing-page-sections/ScheduleSection";
 
 export default function Home() {
     return (
         <>
             <HeroSection />
             <AboutUsSection />
-            {/* <ScheduleSection /> */}
+            <ScheduleSection />
             <SponsorsSection />
             {/* Partner Section */}
             <FAQSection />
             <TeamSection />
             {/* Contact Section */}
-            <ContactSection/>
+            {/* <ContactSection/> */}
             {/* Footer */}
             <FooterSection />
         </>
-    )
+    );
 }

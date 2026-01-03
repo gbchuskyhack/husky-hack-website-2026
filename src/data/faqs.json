@@ -1,0 +1,18 @@
+[
+    {
+        "question": "Who can participate?",
+        "answer": "HuskyHack is open to all students currently enrolled in a college, university, or bootcamp. Recent graduates (within 12 months) are also welcome!"
+    },
+    {
+        "question": "Does it cost anything?",
+        "answer": "Nope! Admission is free. We provide food, caffeine, and swag for the entire 24 hours."
+    },
+    {
+        "question": "How big can teams be?",
+        "answer": "Teams can be up to 4 people. You can hack with friends or form a team on-site."
+    },
+    {
+        "question": "What if I don't have a team?",
+        "answer": "No problem! We will host a Team Formation session at the start of the event to help you find teammates."
+    }
+]

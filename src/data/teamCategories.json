@@ -1,15 +1,23 @@
 [
     {
-        "title": "Executive Team",
-        "keywords": ["President"]
+        "title": "Executive",
+        "keywords": ["Co-President"]
     },
     {
-        "title": "Logistics & Finance",
-        "keywords": ["Logistic", "Finance"]
+        "title": "Logistics",
+        "keywords": ["Logistic"]
     },
     {
-        "title": "Marketing & Outreach",
-        "keywords": ["Marketing", "Outreach"]
+        "title": "Finance",
+        "keywords": ["Finance"]
+    },
+    {
+        "title": "Outreach",
+        "keywords": ["Outreach"]
+    },
+    {
+        "title": "Marketing",
+        "keywords": ["Marketing"]
     },
     {
         "title": "Designers",

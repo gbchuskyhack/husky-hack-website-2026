@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { VT323, Chivo_Mono } from "next/font/google";
 import "./globals.css";
 import RecaptchaProvider from "../providers/RecaptchaProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const vt323 = VT323({
+    weight: "400",
+    variable: "--font-vt323",
+    subsets: ["latin"],
+});
+
+const chivoMono = Chivo_Mono({
+    variable: "--font-chivo-mono",
+    subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
     title: "Husky Hack Website 2026",
@@ -17,7 +26,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={`${vt323.variable} ${chivoMono.variable}`}>
                 <RecaptchaProvider>
                     {children}
                 </RecaptchaProvider>

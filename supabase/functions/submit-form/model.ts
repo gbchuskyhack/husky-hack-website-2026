@@ -1,17 +1,13 @@
-type formData = {
+type FormData = {
   email: string
-  firstName: string
-  lastName: string
 }
 
-type responseBody = {
+type FormValidationResult = {
   message: string
   data: object
   error: {
-    email?: string[]
-    firstName?: string[]
-    lastName?: string[]
+    email: string[]
   }
 }
 
-export type { formData, responseBody }
+export type { FormData, FormValidationResult }
