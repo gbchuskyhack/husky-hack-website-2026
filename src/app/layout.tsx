@@ -15,8 +15,24 @@ const chivoMono = Chivo_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Husky Hack Website 2026",
-    description: "Husky Hack 2026",
+    title: "HuskyHack 2026",
+    description: "Everyone has a story to tell. Turn yours into something real alongside 100+ new friends in the heart of Toronto.",
+    openGraph: {
+        title: "HuskyHack 2026",
+        description: "Everyone has a story to tell. Turn yours into something real alongside 100+ new friends in the heart of Toronto.",
+        type: "website",
+        url: "https://huskyhack.com",
+        siteName: 'HuskyHack',
+        locale: 'en_US',
+        images: [
+            {
+                url: '/husky-use-computer.png', // Must be in your public folder
+                width: 763,
+                height: 554,
+                alt: 'HuskyHack 2026 Preview',
+            },
+        ],
+    },
 };
 
 export default function RootLayout({
