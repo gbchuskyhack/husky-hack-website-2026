@@ -26,8 +26,7 @@ Deno.serve(async (req: Request) => {
   const incomingSecret = req.headers.get('x-vercel-secret')
 
   // GET THE REAL SECRET FROM ENVIRONMENT
-  //const expectedSecret = Deno.env.get('VERCEL_GATEWAY_SECRET') //not working locally - Sam
-  const expectedSecret = "" //if you are seeing this on github, we need to change this secret
+  const expectedSecret = Deno.env.get('VERCEL_GATEWAY_SECRET')
 
   // THE SECURITY CHECK
   // If they don't match, reject immediately.
