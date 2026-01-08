@@ -8,7 +8,7 @@ export default function FAQSection() {
         <section id="FAQ" className="py-40 pt-10">
             <h1 className="text-4xl font-serif text-center mb-10">FAQs</h1>
 
-            <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[3fr_4fr] gap-4 w-full ">
+            <div className="flex flex-col justify-center items-center md:flex-row-reverse gap-4 w-full ">
                 <div className="justify-self-center md:justify-self-end self-center md:self-start flex flex-col items-center justify-center">
                     <h1 className="text-2xl font-serif">?</h1>
                     <Image
@@ -20,9 +20,10 @@ export default function FAQSection() {
                     />
                 </div>
 
-                <div className="flex flex-col gap-4 w-[70%]">
+                <div className="flex flex-col gap-4 w-[50vw] items-center">
                     {faqs.map((faq, index) => (
                         <Accordion
+
                             key={index}
                             question={faq.question}
                             answer={faq.answer}
