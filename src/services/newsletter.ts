@@ -9,6 +9,12 @@ type StandardResponse<T> = {
     data: T | null;
 };
 
+const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers":
+        "authorization, x-client-info, apikey, content-type, x-recaptcha-token",
+}
+
 const NewsletterRequest = z.object({
     email: z.string().email(),
 });
@@ -41,7 +47,7 @@ export const subscribeToNewsletter = async (
         console.log('Calling Vercel...');
         const res = await fetch('https://nameless-disk-9908.cloudflare-flatware557.workers.dev/', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', ...corsHeaders },
             body: JSON.stringify({ ...body, recaptchaToken }),
         });
 
