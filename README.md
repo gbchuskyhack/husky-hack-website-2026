@@ -37,6 +37,10 @@ cd husky-hack-website-2026
 npm install
 ```
 
+4. **Install SupabaseCLI**  
+```bash 
+npm install supabase --save-dev
+```
 
 ### 🏃 Running the Project
 
@@ -48,6 +52,25 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. The page updates as you edit the file.
 
+To start the supabase server you will need to make sure docker  engine is running and then you can start the supabase development server:
+
+```bash 
+npx supabase start
+```
+
+If environment variables are undefined in the supabase edge functions, you might need to specify the path to .env file:
+
+```bash 
+npx supabase functions serve --env-file .env
+```
+
+To stop the supabase development server run:
+
+```bash
+npx supabase stop
+```
+
+
 ## 📂 Project Structure
 
 Here is a quick overview of the key directories in the project:
@@ -56,6 +79,20 @@ Here is a quick overview of the key directories in the project:
 *   `src/components`: Reusable UI components.
 *   `src/utils`: Utility functions and clients (e.g., Supabase client).
 *   `public`: Static assets like images and fonts.
+
+Here is what the .env file should look like:
+
+```bash
+SB_SUBMISSION_SECRET=sb_secret_N...
+SB_RECAPTCHA_SECRET_KEY=6Le-z...
+NEXT_PUBLIC_SUPABASE_URL=http://...
+SUPABASE_URL=http://...
+NEXT_PUBLIC_SUPABASE_KEY=sb_publishable_A...
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=6Le-z...
+SB_CAPTCHA_VALIDATOR_ENDPOINT=http://...
+SB_SUBMIT_FUNCTION_URL=http://...
+VERCEL_GATEWAY_SECRET=4...
+```
 
 ## 🤝 Contributing
 
