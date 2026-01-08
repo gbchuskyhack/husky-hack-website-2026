@@ -13,7 +13,7 @@ export async function POST(request: Request) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'x-vercel-secret': process.env.VERCEL_GATEWAY_SECRET!,
+                'x-vercel-secret': process.env.VCL_GATEWAY_SECRET!,
                 'x-recaptcha-token': recaptchaToken,
             },
             body: JSON.stringify(data),

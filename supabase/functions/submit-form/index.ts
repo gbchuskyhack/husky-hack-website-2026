@@ -26,20 +26,20 @@ Deno.serve(async (req: Request) => {
   const incomingSecret = req.headers.get('x-vercel-secret')
 
   // GET THE REAL SECRET FROM ENVIRONMENT
-  const expectedSecret = Deno.env.get('VERCEL_GATEWAY_SECRET')
+  const expectedSecret = Deno.env.get('VCL_GATEWAY_SECRET')
 
   // THE SECURITY CHECK
   // If they don't match, reject immediately.
   if (incomingSecret !== expectedSecret) {
 
-    console.log('Incoming secret:', incomingSecret);
+    //console.log('Incoming secret:', incomingSecret);
 
     const body: FormValidationResult = {
-      message: 'Unauthorized: Access restricted to Vercel Gateway',
+      message: '',
       data: {},
       error: { email: [] },
     }
-    return createResponse(body, HttpStatus.FORBIDDEN)
+    return createResponse(body, 404) // I hope that return 404 will make bad actor stop trying to access this function
   }
 
   // Safely retrieve environment variables inside the handler

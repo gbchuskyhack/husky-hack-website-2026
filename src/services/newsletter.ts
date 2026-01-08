@@ -39,7 +39,7 @@ export const subscribeToNewsletter = async (
     try {
         // Call Vercel (The Gatekeeper)
         console.log('Calling Vercel...');
-        const res = await fetch('https://husky-hack-website-2026-git-anti-spam-huskyhacks-projects.vercel.app/api/submit', {
+        const res = await fetch('/api/submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...body, recaptchaToken }),
