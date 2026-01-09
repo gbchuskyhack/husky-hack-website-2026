@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# 🐺 Husky Hack Website 2026
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🛠️ Tech Stack
+*   **Framework**: [Next.js](https://nextjs.org/) (App Router)
+*   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+*   **Icons**: [Lucide React](https://lucide.dev/) & [HugeIcons](https://hugeicons.com/)
+*   **Backend / Auth**: [Supabase](https://supabase.com/)
+*   **Security**: [Google reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+*   **Language**: [TypeScript](https://www.typescriptlang.org/)
 
-Currently, two official plugins are available:
+## 🚀 Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Follow these instructions to get the project up and running on your local machine for development and testing purposes.
 
-## React Compiler
+### Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Ensure you have the following installed on your system:
 
-## Expanding the ESLint configuration
+*   [Node.js](https://nodejs.org/) (Latest LTS version recommended)
+*   [npm](https://www.npmjs.com/) (Comes with Node.js)
+*   [Git](https://git-scm.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1.  **Clone the repository**
+```bash
+git clone https://github.com/gbchuskyhack/husky-hack-website-2026.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2.  **Navigate to the project directory**
+```bash
+cd husky-hack-website-2026
 ```
+
+3.  **Install dependencies**
+```bash
+npm install
+```
+
+4. **Install SupabaseCLI**  
+```bash 
+npm install supabase --save-dev
+```
+
+### 🏃 Running the Project
+
+Once the installation and configuration are complete, you can start the development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. The page updates as you edit the file.
+
+To start the supabase server you will need to make sure docker  engine is running and then you can start the supabase development server:
+
+```bash 
+npx supabase start
+```
+
+If environment variables are undefined in the supabase edge functions, you might need to specify the path to .env file:
+
+```bash 
+npx supabase functions serve --env-file .env
+```
+
+To stop the supabase development server run:
+
+```bash
+npx supabase stop
+```
+
+
+## 📂 Project Structure
+
+Here is a quick overview of the key directories in the project:
+
+*   `src/app`: Contains the main application pages and layouts (Next.js App Router).
+*   `src/components`: Reusable UI components.
+*   `src/utils`: Utility functions and clients (e.g., Supabase client).
+*   `public`: Static assets like images and fonts.
+
+Here is what the .env file should look like:
+
+```bash
+SB_SUBMISSION_SECRET=sb_secret_N...
+SB_RECAPTCHA_SECRET_KEY=6Le-z...
+NEXT_PUBLIC_SUPABASE_URL=http://...
+SUPABASE_URL=http://...
+NEXT_PUBLIC_SUPABASE_KEY=sb_publishable_A...
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=6Le-z...
+SB_CAPTCHA_VALIDATOR_ENDPOINT=http://...
+SB_SUBMIT_FUNCTION_URL=http://...
+VERCEL_GATEWAY_SECRET=4...
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1.  Create a new branch for your feature or bugfix.
+2.  Commit your changes with clear messages.
+3.  Push your branch and open a Pull Request.
