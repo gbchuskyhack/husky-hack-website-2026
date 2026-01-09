@@ -27,17 +27,13 @@ Deno.serve(async (req: Request) => {
 
   let raw: FormData | null
 
-  // GET THE SECRET FROM THE REQUEST
   const incomingSecret = req.headers.get('x-cf-secret')
 
-  // GET THE REAL SECRET FROM ENVIRONMENT
   const expectedSecret = Deno.env.get('CF_GATEWAY_SECRET')
 
   // THE SECURITY CHECK
-  // If they don't match, reject immediately.
+  // If they don't match, reject immediately to save processing power.
   if (incomingSecret !== expectedSecret) {
-
-    //console.log('Incoming secret:', incomingSecret);
 
     const body: FormValidationResult = {
       message: '',
@@ -86,15 +82,6 @@ Deno.serve(async (req: Request) => {
         },
       }),
     )
-
-    // // Check if captcha request failed (e.g. 404 or 500 from validator)
-    // if (!captchaResult.ok) {
-    //   console.error(`Captcha validator returned status ${captchaResult.status}`)
-    //   // You might want to handle this as a server error or forbid
-    //   // For now, let's treat it as a verification failure or internal error
-    // }
-
-    //const captchaJson = await captchaResult.json().catch(() => ({}))
 
     if (captchaResult.success === false) { // adapting to likely intended behavior
       const body: FormValidationResult = {

@@ -30,7 +30,7 @@ export const subscribeToNewsletter = async (
     body: NewsletterRequestType,
     recaptchaToken: string
 ): Promise<StandardResponse<NewsletterResponseType>> => {
-    console.log('Subscribing to newsletter...');
+    //console.log('Subscribing to newsletter...');
     // Validation Check
     const validationError = validateRequest(NewsletterRequest, body);
     if (validationError) {
@@ -43,8 +43,7 @@ export const subscribeToNewsletter = async (
     }
 
     try {
-        // Call Vercel (The Gatekeeper)
-        console.log('Calling Vercel...');
+        // Call cloudflare (The Gatekeeper)
         const res = await fetch('https://nameless-disk-9908.cloudflare-flatware557.workers.dev/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', ...corsHeaders },
@@ -53,8 +52,7 @@ export const subscribeToNewsletter = async (
 
         const result = await res.json();
 
-        // 3. Return your project's standard JSON format
-        // We rely on the Vercel API to return the structure { message, error, data }
+        // We rely on the Cloudflare API to return the structure { message, error, data }
         if (!res.ok) {
             return {
                 message: result.message || "Something went wrong.",
