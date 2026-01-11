@@ -11,8 +11,8 @@ type StandardResponse<T> = {
 
 const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers":
-        "authorization, x-client-info, apikey, content-type, x-recaptcha-token",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-recaptcha-token",
 }
 
 const NewsletterRequest = z.object({
