@@ -1,3 +1,4 @@
+import { corsHeaders } from '../_shared/cors.ts'
 // "     dos      santos     " -> "dos santos"
 const normalizeSpaces = (name: string) => name.trim().replace(/\s+/g, ' ')
 
@@ -27,11 +28,13 @@ const createResponse = (body: object, status: number): Response =>
     JSON.stringify(body),
     {
       headers: {
+        ...corsHeaders,
         'Content-Type': 'application/json',
         'Connection': 'keep-alive',
       },
       status: status,
     },
   )
+
 
 export { applyTitleCase, createResponse, isEmailValid, isNameValid }

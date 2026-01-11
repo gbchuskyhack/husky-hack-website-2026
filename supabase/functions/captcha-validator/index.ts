@@ -1,4 +1,10 @@
+import { corsHeaders } from '../_shared/cors.ts'
+
 Deno.serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
+
   const captchaToken = req.headers.get('x-recaptcha-token')
 
   if (captchaToken === null) {
@@ -6,7 +12,10 @@ Deno.serve(async (req) => {
       JSON.stringify(
         { error: 'Missing recaptcha token' },
       ),
-      { status: 400 },
+      {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        status: 400,
+      },
     )
   }
 
@@ -30,6 +39,9 @@ Deno.serve(async (req) => {
       score: data.score,
       'error-codes': data['error-codes'],
     }),
-    { headers: { 'Content-Type': 'application/json' } },
+    {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      status: 200,
+    },
   )
 })
