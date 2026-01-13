@@ -45,6 +45,7 @@ export const subscribeToNewsletter = async (
 
     try {
         // Call cloudflare (The Gatekeeper)
+        console.log('Calling Cloudflare...');
         const res = await fetch(process.env.CF_URL!, {
             method: 'POST',
             //headers: { 'Content-Type': 'application/json', ...corsHeaders },
