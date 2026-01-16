@@ -7,6 +7,11 @@ export default function FooterSection() {
     const textRef = useRef<SVGTextElement>(null);
     const [viewBox, setViewBox] = useState("0 0 100 20");
 
+    const SOCIALS = {
+        linkedin: "https://www.linkedin.com/company/husky-hack/",
+        instagram: "https://www.instagram.com/husky.hack/",
+    }
+
     useEffect(() => {
         const updateViewBox = () => {
             if (textRef.current) {
@@ -38,10 +43,10 @@ export default function FooterSection() {
                         <a href="/construction" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                             <HugeiconsIcon icon={DiscordIcon} size={24} />
                         </a>
-                        <a href="/construction" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                             <HugeiconsIcon icon={Linkedin01Icon} size={24} />
                         </a>
-                        <a href="/construction" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        <a href={SOCIALS.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                             <HugeiconsIcon icon={InstagramIcon} size={24} />
                         </a>
                     </div>
