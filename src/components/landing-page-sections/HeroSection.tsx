@@ -1,49 +1,42 @@
+"use client";
+
+import { useRef } from "react";
+
+import BackgroundLayer from "../hero-svg/BackgroundLayer";
 import NewsletterForm from "../NewsletterForm";
 import SponsorContactLink from "../SponsorContactLink";
-import Image from 'next/image'
-import huskyPeekingImg from "../../assets/husky-peeking.png"
 
 export default function HeroSection() {
     return (
-        <section id='Home' className='h-screen flex flex-col justify-center items-center gap-4'>
-            <div className='content-center mx-5 justify-center'>
-                <div className="flex flex-col items-center justify-center px-5 py-1 text-center ">
-                    {/* Logo Container */}
-                    <div >
-                        <Image
-                            className={"w-36 h-auto mx-auto md:w-60"}
-                            width={300}
-                            height={250}
-                            src={huskyPeekingImg}
-                            alt="Husky hack logo"
-                            placeholder="blur"
+        <section className="relative w-full bg-[#243B5C] overflow-hidden flex flex-col justify-center items-center pt-24 text-white">
+            {/* Text section */}
+            <div className="z-20 text-center px-4 mb-32 h-[80vh] flex flex-col items-center justify-center">
+                <h1 className="text-4xl md:text-6xl font-bold">
+                    {/*Welcome to Camp <br />{" "}*/}
+                    <span className="text-amber-300">HuskyHack</span>
+                </h1>
 
-                        />
-                        {/* Heading */}
-                        <h1 className="text-5xl md:text-7xl text-gray-900 font-serif tracking-tight p-0 -translate-y-2 ">
-                            {"Husky"}<span className={"text-sky-600"}>{"<Hack/>"}</span>
-                        </h1>
-                    </div>
+                <p className="text-white italic">
+                    Where curious minds find their pack
+                </p>
 
+                <p className="text-base text-gray-300 mt-7">
+                    May 2026 • George Brown Polytechnic, Daniel’s Building
+                </p>
 
-
-                    {/* Details */}
-                    <div className="mx-10">
-                        <p className="text-sm md:text-xl font-serif text-gray-700 uppercase tracking-widest">
-                            24 Hours &bull; May 2026
-                        </p>
-
-
-                    </div>
-                    <NewsletterForm/>
+                {/* Sign up for future updates */}
+                <div className="mt-7">
+                    <NewsletterForm />
                 </div>
 
-                <SponsorContactLink/>
-
+                {/* Sponsor us section */}
+                <div className="mt-7">
+                    <SponsorContactLink />
+                </div>
             </div>
 
-
+            {/* Svg Background layer */}
+            <BackgroundLayer className="absolute w-fit" />
         </section>
     );
 }
-

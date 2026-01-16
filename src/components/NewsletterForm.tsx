@@ -15,7 +15,8 @@ export default function NewsletterForm() {
     const { executeRecaptcha } = useGoogleReCaptcha();
 
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [status, setStatus] = useState<InvokeResponse<NewsletterResponseType> | null>(null);
+    const [status, setStatus] =
+        useState<InvokeResponse<NewsletterResponseType> | null>(null);
 
     const handleSubmit = useCallback(
         async (e: FormEvent<HTMLFormElement>) => {
@@ -34,9 +35,12 @@ export default function NewsletterForm() {
                     await executeRecaptcha("newsletter_submit");
                 const email = emailRef.current?.value;
 
-                const response = await subscribeToNewsletter({
-                    email,
-                }, recaptchaToken);
+                const response = await subscribeToNewsletter(
+                    {
+                        email,
+                    },
+                    recaptchaToken,
+                );
 
                 setStatus(response);
 
@@ -59,9 +63,14 @@ export default function NewsletterForm() {
     );
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-2 justify-center my-2">
-            <div className="flex items-center rounded-full bg-sky-200 p-1 transition-all duration-300
-            focus-within:ring-2 focus-within:ring-blue-400 md:w-96">
+        <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-2 justify-center my-2"
+        >
+            <div
+                className="flex items-center rounded-full bg-sky-200 p-1 transition-all duration-300
+            focus-within:ring-2 focus-within:ring-blue-400 md:w-96"
+            >
                 <div className="flex items-center gap-1 flex-grow bg-white rounded-full hover:pr-2 transition-all duration-300 w-48">
                     <input
                         type="email"
@@ -70,7 +79,6 @@ export default function NewsletterForm() {
                         disabled={isSubmitting}
                         placeholder="Signup for our newsletter"
                         ref={emailRef}
-
                         className="p-3 pb-4 pr-0 rounded-full flex-1 focus:outline-none focus:ring-none min-w-0 placeholder:text-xs"
                     />
 
@@ -84,7 +92,7 @@ export default function NewsletterForm() {
                         {isSubmitting ? (
                             <div className="h-6 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-blue-600" />
                         ) : (
-                            <MoveRight className={"w-5 md:w-6"}/>
+                            <MoveRight className={"w-5 md:w-6"} />
                         )}
                     </button>
                 </div>
@@ -95,15 +103,17 @@ export default function NewsletterForm() {
             </div>
 
             <div className="px-2">
-                {status && (<>
-                    <FieldError status={status} fieldName="email" />
+                {status && (
+                    <>
+                        <FieldError status={status} fieldName="email" />
 
-                    <p
-                        className={`text-sm ${status.type === "success" ? "text-green-600" : "text-red-500"}`}
-                    >
-                        {status.message}
-                    </p>
-                </>)}
+                        <p
+                            className={`text-sm ${status.type === "success" ? "text-green-600" : "text-red-500"}`}
+                        >
+                            {status.message}
+                        </p>
+                    </>
+                )}
             </div>
         </form>
     );
