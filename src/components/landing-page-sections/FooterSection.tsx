@@ -1,6 +1,7 @@
 'use client';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useEffect, useRef, useState } from 'react';
+import socialLinks from '../../data/socialLinks.json';
 import { DiscordIcon, Linkedin01Icon, InstagramIcon } from '@hugeicons/core-free-icons';
 
 export default function FooterSection() {
@@ -38,10 +39,10 @@ export default function FooterSection() {
                         <a href="/construction" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                             <HugeiconsIcon icon={DiscordIcon} size={24} />
                         </a>
-                        <a href="/construction" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                             <HugeiconsIcon icon={Linkedin01Icon} size={24} />
                         </a>
-                        <a href="/construction" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                             <HugeiconsIcon icon={InstagramIcon} size={24} />
                         </a>
                     </div>

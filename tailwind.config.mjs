@@ -8,6 +8,8 @@ export default {
             fontFamily: {
                 serif: ["var(--font-vt323)", "serif"],
                 mono: ["var(--font-chivo-mono)", "monospace"],
+                rethink: ["var(--font-rethink-sans)", "sans-serif"],
+                instrument: ["var(--font-instrument-sans)", "sans-serif"],
             },
         },
     },

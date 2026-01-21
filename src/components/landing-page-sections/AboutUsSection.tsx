@@ -1,51 +1,53 @@
 import Image from "next/image";
-import huskyUseComputer from "../../assets/husky-use-computer.png";
-import Underline1 from "../scribbles/Underline1";
-import Star1 from "../scribbles/Star1";
-
+import danielCampus from "../../assets/gbp-daniels-campus.png";
+import studentsLearning from "../../assets/gbp-students-learning.png";
 export default function AboutUsSection() {
-    return (
-        <div className="flex flex-row justify-center md:justify-center w-full mb-20">
-            <div
-                id="About-Us"
-                className="py-10 px-6 md:px-12 flex flex-col md:flex-row items-center gap-8 md:gap-12"
-            >
+return (
+    <div className="relative w-full overflow-hidden h-[708px]">
+        <div className="absolute flex flex-row items-center bottom-0 z-20 h-full w-full justify-between px-5">
+            <div className="w-1/4 relative h-auto top-[100px]">
                 <Image
-                    src={huskyUseComputer}
-                    alt="Husky Use Computer"
-                    className="w-full max-w-[250px] md:max-w-[250px] h-auto object-contain"
-                    width={400}
-                    height={400}
+                    src={studentsLearning}
+                    alt="GBP Students Learning"
+                    className="w-auto h-auto"
+                    width={800}
+                    height={800}
                 />
-
-                <div className="flex flex-col gap-4 max-w-lg">
-                    <div className="flex flex-row justify-center md:justify-start">
-                        <div className="w-fit relative">
-                            <h1 className="text-4xl font-serif relative z-10">
-                                About HuskyHack
-                            </h1>
-                            <Underline1 className="text-neutral-700 w-full h-auto absolute -bottom-3 left-0 z-0 opacity-80" />
-                            <Star1 className="text-sky-400 w-8 h-8 absolute -right-7 -top-5" />
-                            <Star1 className="text-amber-500 w-5 h-6 absolute -right-10 -top-0 rotate-3 -scale-x-100" />
-                        </div>
-                    </div>
-
-                    <div className="text-center md:text-left">
-                        <p className="text-sm text-gray-600 font-sans mt-2 mb-4">
-                            Everyone has a story to tell. Turn yours into
-                            something real alongside 100+ new friends in the
-                            heart of Toronto.
-                        </p>
-                        <p className="text-sm text-gray-600 font-sans">
-                            Join us at HuskyHack on May 1st-2nd for a 24-hour
-                            hackathon to build solutions that bring ideas to
-                            life. We'll handle the space, food, and coffee; you
-                            just need to bring a team, or join one when you get
-                            here.
-                        </p>
-                    </div>
-                </div>
+            </div>
+            <div className="w-3/4 relative flex flex-col items-center top-0 h-full gap-4">
+                <h2 className="text-white text-3xl font-rethink font-semibold">ABOUT US</h2>
+                <h1 className="text-6xl text-[#FED571] text-center font-rethink font-bold">We are George Brown Polytechnic's</h1>
+                <h1 className="text-6xl text-[#FED571] text-center font-rethink font-bold">first ever hack-a-thon!</h1>
+                <p className="text-xl text-white text-center font-instrument">A hackathon is a short, collaborative event where students team up to build projects,
+                    learn new skills, and explore ideas together. It’s a space for creativity, learning,
+                    and community—no experience required.</p>
+                <p className="text-xl text-white text-center font-instrument"> But our hackathon is more than just code—it’s a place to learn, collaborate, and
+                    tell meaningful stories through technology. Whether you’re hacking for the first
+                    time or returning with a big idea, we’re here to support your journey from curiosity
+                    to creation.</p>
+            </div>
+            <div className="w-1/4 relative h-auto top-[100px]">
+                <Image
+                    src={danielCampus}
+                    alt="Daniels Campus"
+                    className="w-auto h-auto"
+                    width={800}
+                    height={800}
+                    />
             </div>
         </div>
-    );
+        <div className="absolute bottom-0 w-full h-full z-10">
+            <Image
+                src="/about-us-section/about-us.svg"
+                alt="Camping landscape"
+                className="object-cover object-bottom"
+                fill
+                priority
+                sizes="100vw"
+            />
+        </div>
+    </div>
+
+
+);
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { VT323, Chivo_Mono } from "next/font/google";
+import { VT323, Chivo_Mono, Rethink_Sans, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import RecaptchaProvider from "../providers/RecaptchaProvider";
 
@@ -13,6 +13,16 @@ const chivoMono = Chivo_Mono({
     variable: "--font-chivo-mono",
     subsets: ["latin"],
 });
+
+const rethink_sans = Rethink_Sans({
+    variable: "--font-rethink-sans",
+    subsets: ["latin"]
+})
+
+const instrument_sans = Instrument_Sans({
+    variable: "--font-instrument-sans",
+    subsets: ["latin"]
+})
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://huskyhack.ca"),
@@ -43,7 +53,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${vt323.variable} ${chivoMono.variable}`}>
+            <body className={`${vt323.variable} ${chivoMono.variable} ${rethink_sans.variable} ${instrument_sans.variable}`}>
                 <RecaptchaProvider>
                     {children}
                 </RecaptchaProvider>
