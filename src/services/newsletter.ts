@@ -14,7 +14,7 @@ const corsHeaders = {
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers":
         "authorization, x-client-info, apikey, content-type, x-recaptcha-token",
-}
+};
 
 const NewsletterRequest = z.object({
     email: z.string().email(),
@@ -29,7 +29,7 @@ export type NewsletterResponseType = z.infer<typeof NewsletterResponse>;
 
 export const subscribeToNewsletter = async (
     body: NewsletterRequestType,
-    recaptchaToken: string
+    recaptchaToken: string,
 ): Promise<StandardResponse<NewsletterResponseType>> => {
     //console.log('Subscribing to newsletter...');
     // Validation Check
@@ -39,17 +39,17 @@ export const subscribeToNewsletter = async (
             message: "Validation failed",
             type: "error",
             error: validationError,
-            data: null
+            data: null,
         };
     }
 
     try {
         // Call cloudflare (The Gatekeeper)
-        console.log('Calling Cloudflare...');
+        console.log("Calling Cloudflare...");
         const res = await fetch(process.env.NEXT_PUBLIC_CF_URL!, {
-            method: 'POST',
+            method: "POST",
             //headers: { 'Content-Type': 'application/json', ...corsHeaders },
-            headers: { 'Content-Type': 'application/json' },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ ...body, recaptchaToken }),
         });
 
@@ -71,9 +71,8 @@ export const subscribeToNewsletter = async (
             error: null,
             data: result.data,
         };
-
     } catch (err: any) {
-        console.error('Error in API route:', err);
+        console.error("Error in API route:", err);
         return {
             message: "Network error occurred.",
             type: "error",

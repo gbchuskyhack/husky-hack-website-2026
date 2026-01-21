@@ -1,0 +1,42 @@
+/* Container: Moves Left <-> Right */
+.fireflyWrapper {
+  position: absolute;
+  top: var(--firefly-top, 50%);
+  left: var(--firefly-left, 50%);
+  animation: moveX var(--duration-move-x, 23s) ease-in-out infinite alternate;
+  animation-delay: var(--delay-move-x, 0s);
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Inner: Moves Up <-> Down */
+.fireflyY {
+  animation: moveY var(--duration-move-y, 17s) ease-in-out infinite alternate;
+  animation-delay: var(--delay-move-y, 0s);
+}
+
+/* The Glow: Pulses opacity */
+.fireflyPoint {
+  width: var(--firefly-size, 4px);
+  height: var(--firefly-size, 4px);
+  background-color: var(--firefly-color, #fbbf24);
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px var(--firefly-color, #fbbf24);
+  animation: flash var(--duration-flash, 3s) ease-in-out infinite;
+  animation-delay: var(--delay-flash, 0s);
+}
+
+@keyframes moveX {
+  0% { transform: translateX(var(--move-x-from, -50px)); }
+  100% { transform: translateX(var(--move-x-to, 50px)); }
+}
+
+@keyframes moveY {
+  0% { transform: translateY(var(--move-y-from, -50px)); }
+  100% { transform: translateY(var(--move-y-to, 50px)); }
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
