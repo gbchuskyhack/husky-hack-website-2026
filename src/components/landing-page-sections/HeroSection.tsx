@@ -1,11 +1,10 @@
-import backgroundLayer from "../hero-svg/backgroundLayer.svg";
 import NewsletterForm from "../NewsletterForm";
 import SponsorContactLink from "../SponsorContactLink";
 import Image from "next/image";
 
 export default function HeroSection() {
     return (
-        <section className="relative w-full min-h-screen bg-[#243B5C] overflow-hidden flex flex-col items-center justify-center text-white">
+        <section className="relative w-full min-h-[90vh] bg-[#243B5C] overflow-hidden flex flex-col items-center justify-center text-white">
             <div className="z-20 text-center px-4 flex flex-col items-center justify-center mt-10 md:mt-0">
                 <h1 className="text-4xl md:text-6xl font-bold">
                     <span className="text-amber-300">HuskyHack</span>
@@ -16,7 +15,7 @@ export default function HeroSection() {
                 </p>
 
                 <p className="text-base text-gray-300 mt-7">
-                    May 2026 • George Brown Polytechnic, Daniel’s Building
+                    May 2026 • George Brown Polytechnic, Daniel&apos;s Building
                 </p>
 
                 <div className="mt-7">
@@ -31,7 +30,7 @@ export default function HeroSection() {
             {/* Svg Background layer */}
             <div className="absolute bottom-0 w-full h-full z-10">
                 <Image
-                    src={backgroundLayer}
+                    src="/hero-svg/backgroundLayer.svg"
                     alt="Camping landscape"
                     className="object-cover object-bottom"
                     fill
