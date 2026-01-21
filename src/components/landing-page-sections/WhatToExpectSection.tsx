@@ -113,12 +113,12 @@ const WhatToExpectSection = () => {
                 </div>
 
                 <div className="flex flex-col items-center gap-4 mt-24 md:mt-32">
-                    <h3 className="text-xl md:text-2xl font-bold text-center mb-8">And more along the journey...</h3>
-                    <h2 className="text-3xl md:text-5xl font-bold text-center mt-12">How to Participate</h2>
+                    <h3 className="text-xl md:text-2xl font-bold text-center mb-8 md:z-10">And more along the journey...</h3>
+                    <h2 className="text-3xl md:text-5xl font-bold text-center mt-12 md:z-10">How to Participate</h2>
                 </div>
 
                 {/* Section 2: Hacker, Mentor, Sponsor Cards */}
-                <div className="relative z-10 flex flex-col lg:flex-row justify-center gap-8 w-full max-w-6xl mx-auto px-4">
+                <div className="relative z-10 flex flex-col lg:flex-row justify-center gap-8 w-full max-w-6xl mx-auto px-4 items-center">
                     <RoleCard
 
                         title="Hacker"
