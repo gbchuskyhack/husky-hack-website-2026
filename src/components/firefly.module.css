@@ -1,6 +1,6 @@
 /* Container: Moves Left <-> Right */
 .fireflyWrapper {
-  position: fixed;
+  position: absolute;
   top: var(--firefly-top, 50%);
   left: var(--firefly-left, 50%);
   animation: moveX var(--duration-move-x, 23s) ease-in-out infinite alternate;
