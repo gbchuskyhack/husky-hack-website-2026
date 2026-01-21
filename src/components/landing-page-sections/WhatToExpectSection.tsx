@@ -61,24 +61,24 @@ const RoleCard = ({ image = "/huskyhacklogo.svg", title, description, buttonText
 
 const WhatToExpectSection = () => {
     return (
-        <div className="relative py-12 md:py-64 px-4 sm:px-8 bg-[linear-gradient(to_bottom,#1C6D41,#243B5C,#090F18,#030609)] text-white overflow-hidden min-h-screen h-auto pb-32">
+        <div className="relative py-12 md:py-48 px-4 sm:px-8 bg-[linear-gradient(to_bottom,#1C6D41,#243B5C,#090F18,#030609)] text-white overflow-hidden min-h-screen h-auto pb-32">
             {/* Background  */}
-            <div className="absolute top-0 left-0 h-full w-auto z-0 pointer-events-none opacity-30 md:opacity-100">
+            <div className="absolute top-0 left-0 h-full w-auto z-0 pointer-events-none opacity-30 lg:opacity-100">
                 <Image
                     src={"/expectations/left_cave.svg"}
                     alt="Cave Left"
-                    className="h-full w-auto object-cover max-w-[150px] md:max-w-none"
+                    className="h-full w-auto object-cover md:max-w-none"
                     width={500}
                     height={1000}
                     unoptimized
                 />
             </div>
 
-            <div className="absolute top-0 right-0 h-full w-auto z-0 pointer-events-none opacity-30 md:opacity-100">
+            <div className="absolute top-0 right-0 h-full w-auto z-0 pointer-events-none opacity-30 lg:opacity-100">
                 <Image
                     src={"/expectations/right_cave.svg"}
                     alt="Cave Right"
-                    className="h-full w-auto object-cover max-w-[150px] md:max-w-none"
+                    className="h-full w-auto object-cover md:max-w-none"
                     width={500}
                     height={1000}
                     unoptimized
@@ -89,7 +89,7 @@ const WhatToExpectSection = () => {
 
             <div className="flex flex-col justify-evenly gap-32 md:gap-24 mt-24 md:mt-12">
                 {/* Features */}
-                <div className="relative z-10 flex flex-col md:flex-row justify-center items-center gap-12 md:gap-16 w-full max-w-6xl mx-auto">
+                <div className="relative z-10 flex flex-col md:flex-row justify-center items-center w-full max-w-6xl mx-auto">
                     <FeatureCard
                         image={packResults}
                         title="Networking"
