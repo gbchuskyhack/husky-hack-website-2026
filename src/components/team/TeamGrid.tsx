@@ -20,9 +20,9 @@ export default function TeamGrid({ groupedMembers }: { groupedMembers: TeamGroup
         <div className="space-y-16 animate-fade-in">
             {groupedMembers.map((group) => (
                 <div key={group.title} className="w-full">
-                    <h3 className="text-2xl font-semibold text-center mb-8 text-gray-700 relative inline-block w-full">
-                        <span className="relative z-10 bg-white px-4">{group.title}</span>
-                        <div className="absolute top-1/2 left-0 w-full h-px bg-gray-200 z-0 transform -translate-y-1/2"></div>
+                    <h3 className="text-2xl font-bold font-rethink text-center mb-8 text-white relative inline-block w-full">
+                        <span className="relative z-10 bg-[#1C6D41] px-4">{group.title}</span>
+                        <div className="absolute top-1/2 left-0 w-full h-px bg-gray-500 z-0 transform -translate-y-1/2"></div>
                     </h3>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 justify-items-center">
@@ -41,15 +41,15 @@ export default function TeamGrid({ groupedMembers }: { groupedMembers: TeamGroup
                                             <TeamMemberPhoto
                                                 mainProfilePicturePath={teamMember.mainProfilePicturePath}
                                                 secondaryProfilePicturePath={teamMember.secondaryProfilePicturePath}
-                                                className="w-24 h-24 sm:w-28 sm:h-28 rounded-full shadow-md object-cover transition-shadow duration-300 group-hover:shadow-lg"
+                                                className="w-24 h-24 sm:w-28 sm:h-28 rounded-full shadow-md object-cover transition-shadow duration-300 group-hover:shadow-white/20"
                                             />
                                         </div>
 
                                         <div className="text-center">
-                                            <h4 className="font-bold text-sm sm:text-base text-gray-900 leading-tight mb-1">
+                                            <h4 className="font-bold text-sm sm:text-base text-white leading-tight mb-1 font-rethink">
                                                 {teamMember.displayName}
                                             </h4>
-                                            <p className="text-xs sm:text-sm text-gray-500 font-medium px-2">
+                                            <p className="text-xs sm:text-sm text-gray-300 font-medium px-2 font-instrument">
                                                 {teamMember.position}
                                             </p>
                                         </div>

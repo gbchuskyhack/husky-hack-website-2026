@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {Cross,X} from "lucide-react";
+import { Cross, X } from "lucide-react";
 
 type AccordionProps = {
     question: string;
@@ -15,10 +15,10 @@ function Accordion({ question, answer }: AccordionProps) {
         <div className={"w-full flex-col border-black border-2 px-4 py-2 "}>
             <button
                 onClick={() => setAccordionOpen(!accordionOpen)}
-                className={`flex justify-between items-center text-left group w-full ${accordionOpen? "pb-4" : "pb-0"}`}
+                className={`flex justify-between items-center text-left group w-full ${accordionOpen ? "pb-4" : "pb-0"}`}
                 aria-expanded={accordionOpen}
             >
-                <h3 className="text-2xl font-serif ">{question}</h3>
+                <h3 className="text-xl md:text-3xl font-instrument-sans font-bold">{question}</h3>
 
                 {/* Icon */}
                 <div
@@ -51,9 +51,9 @@ function Accordion({ question, answer }: AccordionProps) {
                     {/*</svg>*/}
                     {/*// TODO: add actual icons*/}
                     {!accordionOpen ?
-                    <Cross className={""}/>
+                        <Cross className={""} />
                         :
-                    <X/>
+                        <X />
                     }
                 </div>
             </button>
@@ -62,7 +62,7 @@ function Accordion({ question, answer }: AccordionProps) {
                 <div
                     className={`grid overflow-hidden transition-all duration-300 ease-in-out`}
                 >
-                    <div className="overflow-hidden text-gray-700 text-sm leading-relaxed">
+                    <div className="overflow-hidden text-black text-md md:text-lg leading-relaxed">
                         {answer}
                     </div>
                 </div>

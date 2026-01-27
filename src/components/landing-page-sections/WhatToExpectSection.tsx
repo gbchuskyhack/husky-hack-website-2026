@@ -16,8 +16,8 @@ const FeatureCard = ({ image, title, description, className = "", imageClassName
         <div className={`w-full flex items-center justify-center`}>
             <Image src={image} alt={title} className={imageClassName} />
         </div>
-        <h3 className="text-xl md:text-2xl font-bold text-[#fbbf24] mb-2">{title}</h3>
-        <p className="text-gray-300 text-sm md:text-base max-w-xs mx-auto">
+        <h3 className="text-xl md:text-2xl font-bold text-[#fbbf24] mb-2 font-rethink-sans">{title}</h3>
+        <p className="text-gray-300 text-sm md:text-base max-w-xs mx-auto font-instrument-sans">
             {description}
         </p>
     </div>
@@ -45,15 +45,15 @@ const RoleCard = ({ image = "/huskyhacklogo.svg", title, description, buttonText
         </div>
 
         {/* Content: Now follows naturally because of the pt-20 on the parent */}
-        <h3 className="text-2xl md:text-3xl font-bold text-[#fbbf24] pb-1 mb-4 w-full underline">
+        <h3 className="text-2xl md:text-3xl font-bold text-[#fbbf24] pb-1 mb-4 w-full underline font-rethink-sans">
             {title}
         </h3>
 
-        <p className="text-gray-300 mb-8 text-sm leading-relaxed">
+        <p className="text-gray-300 mb-8 text-sm leading-relaxed font-instrument-sans">
             {description}
         </p>
 
-        <button className="bg-[#f97316] hover:bg-[#ea580c] text-white font-bold py-3 px-12 rounded-full transition-colors mt-auto w-full max-w-[200px]">
+        <button className="bg-[#f97316] hover:bg-[#ea580c] text-white font-bold py-3 px-12 rounded-full transition-colors mt-auto w-full max-w-[200px] font-rethink-sans">
             {buttonText}
         </button>
     </div>
@@ -61,31 +61,9 @@ const RoleCard = ({ image = "/huskyhacklogo.svg", title, description, buttonText
 
 const WhatToExpectSection = () => {
     return (
-        <div className="relative py-12 md:py-48 px-4 sm:px-8 bg-[linear-gradient(to_bottom,#1C6D41,#243B5C,#090F18,#030609)] text-white overflow-hidden min-h-screen h-auto pb-32">
-            {/* Background  */}
-            <div className="absolute top-0 left-0 h-full w-auto z-0 pointer-events-none opacity-30 lg:opacity-100">
-                <Image
-                    src={"/expectations/left_cave.svg"}
-                    alt="Cave Left"
-                    className="h-full w-auto object-cover md:max-w-none"
-                    width={500}
-                    height={1000}
-                    unoptimized
-                />
-            </div>
-
-            <div className="absolute top-0 right-0 h-full w-auto z-0 pointer-events-none opacity-30 lg:opacity-100">
-                <Image
-                    src={"/expectations/right_cave.svg"}
-                    alt="Cave Right"
-                    className="h-full w-auto object-cover md:max-w-none"
-                    width={500}
-                    height={1000}
-                    unoptimized
-                />
-            </div>
-
-            <h1 className="relative z-10 text-3xl md:text-4xl font-bold text-center mt-8 md:mt-12">What to Expect</h1>
+        <div>
+          
+            <h1 className="relative z-10 text-3xl md:text-4xl font-bold text-center mt-8 md:mt-12 font-rethink-sans">What to Expect</h1>
 
             <div className="flex flex-col justify-evenly gap-32 md:gap-24 mt-24 md:mt-12">
                 {/* Features */}
@@ -113,8 +91,8 @@ const WhatToExpectSection = () => {
                 </div>
 
                 <div className="flex flex-col items-center gap-4 mt-24 md:mt-32">
-                    <h3 className="text-xl md:text-2xl font-bold text-center mb-8 md:z-10">And more along the journey...</h3>
-                    <h2 className="text-3xl md:text-5xl font-bold text-center mt-12 md:z-10">How to Participate</h2>
+                    <h3 className="text-xl md:text-2xl font-bold text-center mb-8 md:z-10 font-rethink-sans">And more along the journey...</h3>
+                    <h2 className="text-3xl md:text-5xl font-bold text-center mt-12 md:z-10 font-rethink-sans">How to Participate</h2>
                 </div>
 
                 {/* Section 2: Hacker, Mentor, Sponsor Cards */}
