@@ -47,7 +47,7 @@ export default function TeamMarquee({ teams }: { teams: Team[] }) {
         );
 
     return (
-        <div className="flex flex-row items-center w-full pt-2 overflow-x-hidden">
+        <div className="flex flex-row items-center w-full pt-2 overflow-x-hidden overflow-y-hidden">
             <div
                 className="flex animate-scroll hover:[animation-play-state:paused] w-max"
             >
