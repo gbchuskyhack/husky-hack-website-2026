@@ -8,7 +8,7 @@ const CaveDecorationWrapper = ({ children }: { children: React.ReactNode }) => {
                 <Image
                     src={"/expectations/left_cave.svg"}
                     alt="Cave Left"
-                    className="h-full w-auto object-cover md:max-w-none"
+                    className="h-full w-auto object-cover md:max-w-none translate-x-[-50%] md:translate-x-0"
                     width={500}
                     height={1000}
                     unoptimized
@@ -19,7 +19,7 @@ const CaveDecorationWrapper = ({ children }: { children: React.ReactNode }) => {
                 <Image
                     src={"/expectations/right_cave.svg"}
                     alt="Cave Right"
-                    className="h-full w-auto object-cover md:max-w-none"
+                    className="h-full w-auto object-cover md:max-w-none translate-x-[50%] md:translate-x-0"
                     width={500}
                     height={1000}
                     unoptimized
