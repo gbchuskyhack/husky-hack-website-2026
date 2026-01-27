@@ -6,18 +6,11 @@ export default function ScheduleSection() {
             {/* Left Content (Text) */}
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
                 <div className="flex flex-col justify-center">
-                    <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-sm">
-                        Schedule
-                    </h2>
-                    <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-lg shadow-black drop-shadow-sm">
-                        Get ready for an action-packed weekend! Here is what we have planned for you.
-                        workshops, coding sessions, and fun activities.
-                    </p>
-
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-6 drop-shadow-sm font-rethink-sans">
+                        Our schedule is ...
+                    </h3>
                     {/* Placeholder for schedule details */}
-                    <div className="inline-block p-6 bg-black/20 backdrop-blur-sm rounded-2xl border border-white/10 text-white w-fit">
-                        <span className="font-mono text-lg">📅 Timeline Coming Soon</span>
-                    </div>
+                    <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-sm font-rethink-sans">COMING SOON</h2>
                 </div>
             </div>
 
