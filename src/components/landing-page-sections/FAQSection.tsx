@@ -5,28 +5,20 @@ import Image from "next/image";
 
 export default function FAQSection() {
     return (
-        <section id="FAQ" className="py-40 pt-10">
-            <h1 className="text-4xl font-serif text-center mb-10">FAQs</h1>
+        <section id="FAQ" className="py-40 pt-10 bg-[#1C6D41]">
+            <h1 className="text-xl  md:text-2xl font-rethink-sans text-center mb-10 text-white">FREQUENTLY ASKED QUESTIONS</h1>
 
-            <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[3fr_4fr] gap-4 w-full ">
-                <div className="justify-self-center md:justify-self-end self-center md:self-start flex flex-col items-center justify-center">
-                    <h1 className="text-2xl font-serif">?</h1>
-                    <Image
-                        src={huskyPeekComputer}
-                        alt="Husky Peek Using Computer"
-                        width={300}
-                        height={300}
-                        className="w-1/2"
-                    />
-                </div>
+            <div className="flex flex-col justify-center items-center md:flex-row-reverse gap-4 w-full ">
 
-                <div className="flex flex-col gap-4 w-[70%]">
+                <div className="flex flex-col gap-4 w-[50vw] items-start">
                     {faqs.map((faq, index) => (
-                        <Accordion
-                            key={index}
-                            question={faq.question}
-                            answer={faq.answer}
-                        />
+
+                        <div className="bg-[#5E4527] rounded-lg w-[50vw] text-black" key={index}>
+
+                            <Accordion
+                                question={faq.question}
+                                answer={faq.answer} />
+                        </div>
                     ))}
                 </div>
             </div>
