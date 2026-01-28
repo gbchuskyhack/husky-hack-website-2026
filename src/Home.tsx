@@ -1,3 +1,4 @@
+import NavBar from "./components/Nav";
 import HeroSection from "./components/landing-page-sections/HeroSection";
 import AboutUsSection from "./components/landing-page-sections/AboutUsSection";
 // import ScheduleSection from "./components/landing-page-sections/ScheduleSection";
@@ -11,6 +12,7 @@ import ScheduleSection from "./components/landing-page-sections/ScheduleSection"
 export default function Home() {
     return (
         <>
+            <NavBar/>
             <HeroSection />
             <AboutUsSection />
             <ScheduleSection />
