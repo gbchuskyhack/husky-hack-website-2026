@@ -67,7 +67,7 @@ const WhatToExpectSection = () => {
 
             <div className="flex flex-col justify-evenly gap-32 md:gap-24 mt-24 md:mt-12">
                 {/* Features */}
-                <div className="relative z-10 flex flex-col md:flex-row justify-center items-center w-full max-w-6xl mx-auto">
+                <div className="relative z-10 flex flex-col md:flex-row gap-24 md:gap-0 justify-center items-center w-full max-w-6xl mx-auto">
                     <FeatureCard
                         image={packResults}
                         title="Networking"
