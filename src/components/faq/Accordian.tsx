@@ -23,17 +23,18 @@ function FAQAccordion({ question, answer, collapseTrigger }: AccordionProps) {
         <div className="w-full flex-col py-2">
             <button
                 onClick={() => setAccordionOpen((prev) => !prev)}
-                className={`flex justify-between items-center text-left group w-full 
+                className={`flex gap-4 items-center group w-full 
                     text-white
                     ${accordionOpen ? "pb-4" : "pb-2"}`}
                 aria-expanded={accordionOpen}
             >
-                <h3 className="text-xl md:text-2xl font-rethink-sans font-bold text-white pr-4">{question}</h3>
-
-                {/* Icon */}
                 <div className="group-hover:opacity-100 text-white shrink-0">
                     {!accordionOpen ? <Plus /> : <Minus />}
                 </div>
+                <h3 className="text-xl md:text-2xl font-rethink-sans font-semibold text-white pr-4">{question}</h3>
+
+                {/* Icon */}
+
             </button>
 
             <div
@@ -47,7 +48,7 @@ function FAQAccordion({ question, answer, collapseTrigger }: AccordionProps) {
                 }}
                 className={`transition-[max-height] duration-300 ease-in-out overflow-hidden grid`}
             >
-                <div className="overflow-hidden text-white/90 font-rethink-sans text-base md:text-lg leading-relaxed pt-1 pb-4">
+                <div className="overflow-hidden text-white/90 font-rethink-sans text-light md:text-lg leading-relaxed p-1">
                     {answer}
                 </div>
             </div>
