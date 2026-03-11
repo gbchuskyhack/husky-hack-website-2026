@@ -1,18 +1,10 @@
 import React from "react";
 import MediaPartnerCard from "../partners/MediaPartnerCard";
-import startupGrindLogo from "../../assets/startupGrind-light.jpg";
-import startupGrindDarkLogo from "../../assets/startupGrind-dark.jpg";
+import partners from "../../data/partners.json";
 
 export default function MediaSection() {
     // Dummy or initial data for media partners
-    const mediaPartners = [
-        {
-            name: "Startup Grind",
-            logo: startupGrindLogo,
-            logoDark: startupGrindDarkLogo,
-            link: "https://www.startupgrind.com/"
-        }
-    ];
+    const mediaPartners = partners;
 
     const hasAnyPartners = mediaPartners.length > 0;
 

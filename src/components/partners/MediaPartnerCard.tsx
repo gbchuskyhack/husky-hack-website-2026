@@ -44,9 +44,9 @@ export default function MediaPartnerCard({
                 </div>
 
                 {/* Name */}
-                <h3 className="mt-2 text-center text-white text-sm font-semibold max-w-full truncate">
+                {/* <h3 className="mt-2 text-center text-white text-sm font-semibold max-w-full truncate">
                     {name}
-                </h3>
+                </h3> */}
             </div>
         </a>
     );
