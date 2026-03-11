@@ -1,6 +1,7 @@
 import React from "react";
 import MediaPartnerCard from "../partners/MediaPartnerCard";
-import startupGrindLogo from "../../assets/startupGrind.jpg";
+import startupGrindLogo from "../../assets/startupGrind-light.jpg";
+import startupGrindDarkLogo from "../../assets/startupGrind-dark.jpg";
 
 export default function MediaSection() {
     // Dummy or initial data for media partners
@@ -8,6 +9,7 @@ export default function MediaSection() {
         {
             name: "Startup Grind",
             logo: startupGrindLogo,
+            logoDark: startupGrindDarkLogo,
             link: "https://www.startupgrind.com/"
         }
     ];
@@ -31,6 +33,7 @@ export default function MediaSection() {
                                 <MediaPartnerCard
                                     name={partner.name}
                                     logo={partner.logo}
+                                    logoDark={partner.logoDark}
                                     link={partner.link}
                                 />
                             </div>
