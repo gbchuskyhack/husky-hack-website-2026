@@ -3,6 +3,7 @@ import HeroSection from "./components/landing-page-sections/HeroSection";
 import AboutUsSection from "./components/landing-page-sections/AboutUsSection";
 // import ScheduleSection from "./components/landing-page-sections/ScheduleSection";
 import SponsorsSection from "./components/landing-page-sections/SponsorsSection";
+import MediaSection from "./components/landing-page-sections/MediaSection";
 import FAQSection from "./components/landing-page-sections/FAQSection";
 import TeamSection from "./components/landing-page-sections/TeamSection";
 import FooterSection from "./components/landing-page-sections/FooterSection";
@@ -23,6 +24,7 @@ export default function Home() {
             </CaveDecorationWrapper>
             <SponsorsSection />
             {/* Partner Section */}
+            <MediaSection />
             <FAQSection />
             <TeamSection />
             {/* Contact Section */}
