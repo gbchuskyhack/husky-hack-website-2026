@@ -1,17 +1,30 @@
 import React from "react";
 import MediaPartnerCard from "../partners/MediaPartnerCard";
-import partners from "../../data/partners.json";
+import partnersData from "../../data/partners.json";
+
+type Partner = {
+    name: string;
+    logo: string;
+    logoDark?: string;
+    link: string;
+};
+
+type PartnerTier = {
+    id: string;
+    label: string;
+    description: string;
+    sponsors: Partner[];
+};
+
+const tiers = partnersData.tiers as PartnerTier[];
 
 export default function MediaSection() {
-    // Dummy or initial data for media partners
-    const mediaPartners = partners;
-
-    const hasAnyPartners = mediaPartners.length > 0;
+    const hasAnyPartners = tiers.some((tier) => tier.sponsors.length > 0);
 
     return (
         <section
             id="MediaPartners"
-            className="w-full bg-[#1A1A1A] py-24" // Dark background similar to other sections outside gradient, adjust if needed
+            className="w-full bg-[#1A1A1A] py-24"
         >
             <div className="mx-auto w-full max-w-6xl px-6 pb-24 md:px-12">
                 <h1 className="mb-12 text-center font-rethink text-3xl font-semibold text-[#FED571] uppercase">
@@ -19,17 +32,27 @@ export default function MediaSection() {
                 </h1>
 
                 {hasAnyPartners ? (
-                    <div className="flex w-full flex-wrap justify-center gap-6 sm:gap-8">
-                        {mediaPartners.map((partner, index) => (
-                            <div key={index}>
-                                <MediaPartnerCard
-                                    name={partner.name}
-                                    logo={partner.logo}
-                                    logoDark={partner.logoDark}
-                                    link={partner.link}
-                                />
-                            </div>
-                        ))}
+                    <div className="space-y-10">
+                        {tiers
+                            .filter((tier) => tier.sponsors.length > 0)
+                            .map((tier) => (
+                                <div key={tier.id}>
+                                    <h2 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-[0.12em] text-white">
+                                        {tier.label}
+                                    </h2>
+                                    <div className="flex w-full flex-wrap justify-center gap-6 sm:gap-8">
+                                        {tier.sponsors.map((partner) => (
+                                            <MediaPartnerCard
+                                                key={partner.name}
+                                                name={partner.name}
+                                                logo={partner.logo}
+                                                logoDark={partner.logoDark}
+                                                link={partner.link}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
                     </div>
                 ) : (
                     <div className="flex w-full justify-center">
