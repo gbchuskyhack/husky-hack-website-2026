@@ -22,9 +22,11 @@ export default function Home() {
                 <WhatToExpectSection />
                 <ScheduleSection />
             </CaveDecorationWrapper>
-            <SponsorsSection />
-            {/* Partner Section */}
-            <MediaSection />
+            <div className="w-full bg-[linear-gradient(to_right,#1E6D41,#4F743C)]">
+                <SponsorsSection />
+                {/* Partner Section */}
+                <MediaSection />
+            </div>
             <FAQSection />
             <TeamSection />
             {/* Contact Section */}

@@ -24,7 +24,7 @@ export default function MediaSection() {
     return (
         <section
             id="MediaPartners"
-            className="w-full bg-[#1A1A1A] py-24"
+            className="w-full py-24"
         >
             <div className="mx-auto w-full max-w-6xl px-6 pb-24 md:px-12">
                 <h1 className="mb-12 text-center font-rethink text-3xl font-semibold text-[#FED571] uppercase">
