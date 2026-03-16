@@ -3,37 +3,26 @@ import Image from "next/image";
 type BronzeSponsorCardProps = {
   title: string;
   sponsorLogo: string;
-  borderColour: string;
   link: string;
 };
 
-function BronzeSponsorCard({
-  title,
-  sponsorLogo,
-  borderColour,
-  link,
-}: BronzeSponsorCardProps) {
+function BronzeSponsorCard({ title, sponsorLogo, link }: BronzeSponsorCardProps) {
   return (
-    <a href={link} target="_blank">
+    <a href={link} target="_blank" rel="noopener noreferrer">
       <div
         className="
-          flex flex-col items-center justify-center
-          rounded-md 
-          h-[15vw] w-[15vw]
-          p-4
-          grayscale opacity-90
+          flex items-center justify-center
+          w-[14vw] h-[7vw]
+          grayscale opacity-80
           transition duration-300
           hover:grayscale-0 hover:opacity-100
         "
-        style={{ border: `2px solid ${borderColour}` }}>
-        {/* Logo */}
-        <div className="flex items-center justify-center">
-          <Image
-            src={sponsorLogo}
-            alt={`Brand logo for ${title}`}
-            className="max-h-[12vw] max-w-[12vw] object-contain"
-          />
-        </div>
+      >
+        <Image
+          src={sponsorLogo}
+          alt={`Brand logo for ${title}`}
+          className="w-full h-full object-contain"
+        />
       </div>
     </a>
   );

@@ -17,10 +17,10 @@ type SponsorTier = {
 const tiers = sponsorsData.tiers as SponsorTier[];
 
 const tierCardSizes: Record<SponsorTier["id"], string> = {
-    gold: "w-[260px] h-[130px] sm:w-[300px] sm:h-[150px]",
-    silver: "w-[220px] h-[110px] sm:w-[250px] sm:h-[126px]",
-    bronze: "w-[180px] h-[96px] sm:w-[210px] sm:h-[110px]",
-    "in-kind": "w-[200px] h-[104px] sm:w-[230px] sm:h-[116px]"
+    gold: "w-[280px] h-[140px] sm:w-[340px] sm:h-[170px]",
+    silver: "w-[200px] h-[100px] sm:w-[240px] sm:h-[120px]",
+    bronze: "w-[140px] h-[70px] sm:w-[170px] sm:h-[86px]",
+    "in-kind": "w-[160px] h-[80px] sm:w-[190px] sm:h-[96px]"
 };
 
 export default function SponsorsSection() {
@@ -41,47 +41,45 @@ export default function SponsorsSection() {
                         {tiers
                             .filter((tier) => tier.sponsors.length > 0)
                             .map((tier) => (
-                        <div key={tier.id}>
-                            <h2 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-[0.12em] text-white">
-                                {tier.label}
-                            </h2>
+                                <div key={tier.id}>
+                                    <h2 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-[0.12em] text-white">
+                                        {tier.label}
+                                    </h2>
 
-                            <div className="flex w-full flex-wrap justify-center gap-3 sm:gap-4">
-                                {tier.sponsors.map((sponsor) => {
-                                    const card = (
-                                        <div
-                                            className={`flex flex-shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/5 p-4 transition-colors duration-200 hover:bg-white/10 ${tierCardSizes[tier.id]}`}
-                                        >
-                                            <div className="flex h-full w-full items-center justify-center">
-                                                <Image
-                                                    src={sponsor.logo}
-                                                    alt={`${sponsor.name} logo`}
-                                                    width={220}
-                                                    height={96}
-                                                    className="h-[70%] w-auto max-w-[85%] object-contain"
-                                                />
-                                            </div>
-                                        </div>
-                                    );
+                                    <div className="flex w-full flex-wrap justify-center gap-3 sm:gap-4">
+                                        {tier.sponsors.map((sponsor) => {
+                                            const card = (
+                                                <div
+                                                    className={`flex flex-shrink-0 items-center justify-center opacity-100 transition duration-300 hover:grayscale ${tierCardSizes[tier.id]}`}
+                                                >
+                                                    <Image
+                                                        src={sponsor.logo}
+                                                        alt={`${sponsor.name} logo`}
+                                                        width={340}
+                                                        height={170}
+                                                        className="h-full w-full object-contain"
+                                                    />
+                                                </div>
+                                            );
 
-                                    return sponsor.href ? (
-                                        <a
-                                            key={`${tier.id}-${sponsor.name}`}
-                                            href={sponsor.href}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="block"
-                                            aria-label={`Visit ${sponsor.name}`}
-                                        >
-                                            {card}
-                                        </a>
-                                    ) : (
-                                        <div key={`${tier.id}-${sponsor.name}`}>{card}</div>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    ))}
+                                            return sponsor.href ? (
+                                                <a
+                                                    key={`${tier.id}-${sponsor.name}`}
+                                                    href={sponsor.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="block"
+                                                    aria-label={`Visit ${sponsor.name}`}
+                                                >
+                                                    {card}
+                                                </a>
+                                            ) : (
+                                                <div key={`${tier.id}-${sponsor.name}`}>{card}</div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            ))}
                     </div>
                 ) : (
                     <div className="flex w-full justify-center">

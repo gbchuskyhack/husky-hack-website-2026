@@ -3,35 +3,28 @@ import Image from "next/image";
 type GoldSponsorCardProps = {
   title: string;
   sponsorLogo: string;
-  borderColour: string;
+  link: string;
 };
 
-function GoldSponsorCard({
-  title,
-  sponsorLogo,
-  borderColour,
-}: GoldSponsorCardProps) {
+function GoldSponsorCard({ title, sponsorLogo, link }: GoldSponsorCardProps) {
   return (
-    <div
-      className="
-        flex flex-col items-center justify-center
-        rounded-md h-[30vw] w-[30vw]
-        p-6 grayscale opacity-90 transition duration-300
-        hover:grayscale-0 hover:opacity-100"
-      style={{ border: `2px solid ${borderColour}` }}
-    >
-
-      {/* Logo */}
-      <div className="flex items-center justify-center">
+    <a href={link} target="_blank" rel="noopener noreferrer">
+      <div
+        className="
+          flex items-center justify-center
+          w-[28vw] h-[14vw]
+          grayscale opacity-80
+          transition duration-300
+          hover:grayscale-0 hover:opacity-100
+        "
+      >
         <Image
           src={sponsorLogo}
           alt={`Brand logo for ${title}`}
-          className="
-          max-h-[25vw] object-contain"
-
+          className="w-full h-full object-contain"
         />
       </div>
-    </div>
+    </a>
   );
 }
 
