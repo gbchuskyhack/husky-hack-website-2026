@@ -1,0 +1,17 @@
+{
+    "tiers": [
+        {
+            "id": "media",
+            "label": "Media Partners",
+            "description": "Media organizations helping us spread the word about HuskyHack.",
+            "sponsors": [
+                {
+                    "name": "Startup Grind",
+                    "logo": "/partners/startupGrind-light.jpg",
+                    "logoDark": "/partners/startupGrind-dark.jpg",
+                    "link": "https://www.startupgrind.com/"
+                }
+            ]
+        }
+    ]
+}

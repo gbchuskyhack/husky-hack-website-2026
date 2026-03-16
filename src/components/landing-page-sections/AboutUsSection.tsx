@@ -95,7 +95,7 @@ export default function AboutUsSection() {
                     height={202}
                 />
                 <Link
-                    href="/discord"
+                    href={process.env.NEXT_PUBLIC_DISCORD_INVITE_URL || ""}
                     className="absolute top-1/2 left-1/2 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 
                     px-4 py-3
                     md:px-8 md:py-4 rounded-full border-2 border-[#A6D6B8]/70 bg-[#1E5A37]/85 text-white transition hover:bg-[#287246]/90 hover:border-[#C2E6CF]"
