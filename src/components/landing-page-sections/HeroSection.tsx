@@ -26,24 +26,28 @@ export default function HeroSection() {
                 </h1>
 
                 <p className="text-white text-lg md:text-xl pt-5">
-                    May 1-2, 2026 
+                    May 1-2, 2026
                     <span className="text-gray-400 mx-2">•</span>
                     George Brown Polytechnic, Waterfront
                 </p>
-
-                <div className="mt-10 flex flex-col items-center gap-2">
+                <div className="mt-7">
                     <Link
                         href="/registration/hacker"
                         className="px-8 py-3 bg-[#FF7703] text-black border-2 border-[#A63C06] rounded-full hover:brightness-110 transition"
                     >
                         <span className="font-rethink text-md font-semibold">Apply Now!</span>
                     </Link>
-                    <p className="text-md text-gray-300">Applications close March 25th.</p>
                 </div>
 
-                <div className="mt-5 flex flex-col items-center">
-                    <ArrowDown className="w-6 h-6 text-white mt-4 animate-bounce" style={{ opacity: arrowOpacity }}/>
+                <div className="absolute bottom-10 mt-10 flex flex-col items-center gap-2">
+
+                    <p className="text-md text-gray-300">Applications close March 25th.</p>
+                    <div className="flex flex-col items-center">
+                        <ArrowDown className="w-6 h-6 text-white mt-4 animate-bounce" style={{ opacity: arrowOpacity }} />
+                    </div>
                 </div>
+
+
 
                 {/* <p className="text-[#FED571] italic pt-7">
                     Where curious minds find their pack
