@@ -41,7 +41,7 @@ export default function AboutUsSection() {
                         George Brown Polytechnic's largest student-run hackathon
                     </h1>
                     <p className="italic text-lg text-gray-200 text-center font-instrument md:not-italic md:text-xl">
-                        Spend <strong className="text-white">24 hours</strong>{" "}
+                        Spend <strong className="text-white">12 hours</strong>{" "}
                         in the heart of Toronto building something you're
                         passionate about, food and caffeine is on us.{" "}
                         <strong className="text-white">Find your pack</strong>{" "}

@@ -26,7 +26,7 @@ export default function HeroSection() {
                 </h1>
 
                 <p className="text-white text-lg md:text-xl pt-5">
-                    May 1-2, 2026
+                    May 2, 2026
                     <span className="text-gray-400 mx-2">•</span>
                     George Brown Polytechnic, Waterfront
                 </p>
