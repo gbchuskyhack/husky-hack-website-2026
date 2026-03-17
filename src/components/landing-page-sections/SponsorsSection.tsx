@@ -1,6 +1,7 @@
 import SponsorContactLink from "../SponsorContactLink";
 import Image from "next/image";
 import sponsorsData from "../../data/sponsors.json";
+import SponsorLayout from "../sponsors/SponsorLayout";
 
 type Sponsor = {
     name: string;
@@ -37,50 +38,7 @@ export default function SponsorsSection() {
                 </h1>
 
                 {hasAnySponsors ? (
-                    <div className="space-y-10">
-                        {tiers
-                            .filter((tier) => tier.sponsors.length > 0)
-                            .map((tier) => (
-                                <div key={tier.id}>
-                                    <h2 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-[0.12em] text-white">
-                                        {tier.label}
-                                    </h2>
-
-                                    <div className="flex w-full flex-wrap justify-center gap-3 sm:gap-4">
-                                        {tier.sponsors.map((sponsor) => {
-                                            const card = (
-                                                <div
-                                                    className={`flex flex-shrink-0 items-center justify-center opacity-100 transition duration-300 hover:grayscale ${tierCardSizes[tier.id]}`}
-                                                >
-                                                    <Image
-                                                        src={sponsor.logo}
-                                                        alt={`${sponsor.name} logo`}
-                                                        width={340}
-                                                        height={170}
-                                                        className="h-full w-full object-contain"
-                                                    />
-                                                </div>
-                                            );
-
-                                            return sponsor.href ? (
-                                                <a
-                                                    key={`${tier.id}-${sponsor.name}`}
-                                                    href={sponsor.href}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="block"
-                                                    aria-label={`Visit ${sponsor.name}`}
-                                                >
-                                                    {card}
-                                                </a>
-                                            ) : (
-                                                <div key={`${tier.id}-${sponsor.name}`}>{card}</div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            ))}
-                    </div>
+                    <SponsorLayout />
                 ) : (
                     <div className="flex w-full justify-center">
                         <div className="flex h-36 w-36 flex-col items-center justify-center rounded-lg border border-dashed border-white/30 text-white/55">

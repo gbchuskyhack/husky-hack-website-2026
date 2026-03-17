@@ -3,66 +3,92 @@ import GoldSponsorCard from "./GoldSponsorCard";
 import SilverSponsorCard from "./SilverSponsorCard";
 import sponsors from "../../data/sponsors.json";
 
+// ── All card sizes live here ─────────────────────────────────────────────────
+const GOLD_SIZE = "w-[120px] h-[120px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px]";
+const SILVER_SIZE = "w-[70px]  h-[70px]  sm:w-[110px] sm:h-[110px] md:w-[130px] md:h-[130px]";
+const BRONZE_SIZE = "w-[50px]  h-[50px]  sm:w-[85px]  sm:h-[85px]  md:w-[100px] md:h-[100px] rounded-full";
+// ─────────────────────────────────────────────────────────────────────────────
+
 function SponsorLayout() {
-    const goldSponsors = sponsors.tiers.find((tier) => tier.id === "gold")?.sponsors ?? [];
-    const silverSponsors = sponsors.tiers.find((tier) => tier.id === "silver")?.sponsors ?? [];
-    const bronzeSponsors = sponsors.tiers.find((tier) => tier.id === "bronze")?.sponsors ?? [];
+    const goldSponsors = sponsors.tiers.find((t) => t.id === "gold")?.sponsors ?? [];
+    const silverSponsors = sponsors.tiers.find((t) => t.id === "silver")?.sponsors ?? [];
+    const bronzeSponsors = sponsors.tiers.find((t) => t.id === "bronze")?.sponsors ?? [];
 
     const hasSponsors = goldSponsors.length > 0 || silverSponsors.length > 0 || bronzeSponsors.length > 0;
 
     if (!hasSponsors) {
         return (
-            <div className="flex flex-col items-center justify-center w-full py-12 gap-8">
-                <div className="w-9/10 flex flex-col flex-wrap md:flex-row items-center justify-center gap-6 md:gap-10">
-                    {/* Skeleton placeholders */}
-                    <div className="w-72 h-48 md:w-96 md:h-64 rounded-xl bg-[#6c6c6c] border border-[#434343] shadow-inner" />
-                    <div className="w-72 h-48 md:w-96 md:h-64 rounded-xl bg-[#6c6c6c] border border-[#434343] shadow-inner" />
-                    <div className="w-72 h-48 md:w-96 md:h-64 rounded-xl bg-[#6c6c6c] border border-[#434343] shadow-inner" />
-                    <div className="w-72 h-48 md:w-96 md:h-64 rounded-xl bg-[#6c6c6c] border border-[#434343] shadow-inner" />
-                    <div className="w-72 h-48 md:w-96 md:h-64 rounded-xl bg-[#6c6c6c] border border-[#434343] shadow-inner" />
-                </div>
+            <div className="flex flex-wrap justify-center gap-6 py-12">
+                {[...Array(5)].map((_, i) => (
+                    <div key={i} className="w-48 h-48 rounded-xl bg-[#6c6c6c] border border-[#434343]" />
+                ))}
             </div>
         );
     }
 
+    // Gold cell pixel sizes extracted for computing the 2-column container width
+    // These match GOLD_SIZE: 140px base, 180px sm, 220px md
+    // Container = (2 × cell) + (1 × gap-2=8px) at each breakpoint
+
     return (
-        <div className="rounded-lg">
-            {goldSponsors.length > 0 && (
-                <div className="flex flex-wrap justify-center items-center min-w-[60vw] gap-8 py-10">
-                    {goldSponsors.map((sponsor, index) => (
-                        <GoldSponsorCard
-                            key={index}
-                            title={sponsor.name}
-                            sponsorLogo={sponsor.logo}
-                            link={sponsor.link}
-                        />
-                    ))}
-                </div>
-            )}
-            {silverSponsors.length > 0 && (
-                <div className="flex flex-wrap justify-center items-center min-w-[60vw] gap-8 py-10">
-                    {silverSponsors.map((sponsor, index) => (
-                        <SilverSponsorCard
-                            key={index}
-                            title={sponsor.name}
-                            sponsorLogo={sponsor.logo}
-                            link={sponsor.link}
-                        />
-                    ))}
-                </div>
-            )}
+        <div className="flex flex-row items-start justify-center gap-8 w-full">
+
+            {/* Left: Gold + Silver */}
+            <div className="flex flex-col gap-6">
+
+                {/* Gold — flex-wrap, container width forces exactly 2 per row */}
+                {goldSponsors.length > 0 && (
+                    <section className="flex flex-col items-center justify-center">
+                        <h3 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-widest text-[#FED571]">
+                            Gold Sponsors
+                        </h3>
+                        {/* width = 2 cells + 1 gap (gap-2 = 8px) at each breakpoint */}
+                        <div className="w-[200px] sm:w-[368px] md:w-[448px]">
+                            <div className="flex flex-wrap gap-2 justify-center align-center">
+                                {goldSponsors.map((sponsor, index) => (
+                                    <div key={index} className={GOLD_SIZE}>
+                                        <GoldSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                )}
+
+                {/* Silver — flex-wrap */}
+                {silverSponsors.length > 0 && (
+                    <div>
+                        <h3 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-widest text-white/70">
+                            Silver Sponsors
+                        </h3>
+                        <div className="flex flex-wrap gap-2 justify-center align-center">
+                            {silverSponsors.map((sponsor, index) => (
+                                <div key={index} className={SILVER_SIZE}>
+                                    <SilverSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+            </div>
+
+            {/* Right: Bronze */}
             {bronzeSponsors.length > 0 && (
-                <div className="flex flex-wrap justify-center items-center min-w-[60vw] gap-8 py-10">
-                    {bronzeSponsors.map((sponsor, index) => (
-                        <BronzeSponsorCard
-                            key={index}
-                            title={sponsor.name}
-                            sponsorLogo={sponsor.logo}
-                            link={sponsor.link}
-                        />
-                    ))}
-                </div>
+                <section className="flex flex-col items-center justify-center">
+                    <h3 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-widest text-[#cd7f32]">
+                        Bronze Sponsors
+                    </h3>
+                    <div className="flex flex-wrap gap-2 justify-center align-center">
+                        {bronzeSponsors.map((sponsor, index) => (
+                            <div key={index} className={BRONZE_SIZE}>
+                                <BronzeSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
+                            </div>
+                        ))}
+                    </div>
+                </section>
             )}
+
         </div>
     );
 }
