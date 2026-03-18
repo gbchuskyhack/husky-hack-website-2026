@@ -1,3 +1,4 @@
+import Image from "next/image";
 import BronzeSponsorCard from "./BronzeSponsorCard";
 import GoldSponsorCard from "./GoldSponsorCard";
 import SilverSponsorCard from "./SilverSponsorCard";
@@ -8,6 +9,30 @@ const GOLD_SIZE = "w-[120px] h-[120px] sm:w-[180px] sm:h-[180px] md:w-[220px] md
 const SILVER_SIZE = "w-[70px]  h-[70px]  sm:w-[110px] sm:h-[110px] md:w-[130px] md:h-[130px]";
 const BRONZE_SIZE = "w-[50px]  h-[50px]  sm:w-[85px]  sm:h-[85px]  md:w-[100px] md:h-[100px] rounded-full";
 // ─────────────────────────────────────────────────────────────────────────────
+
+// Each array is ordered outer → inner; right side mirrors in reverse
+const TIER_STARS = [
+    [{ deg: 10, size: 18 }],
+    [{ deg: -20, size: 13 }, { deg: 12, size: 18 }],
+    [{ deg: -15, size: 11 }, { deg: 8, size: 15 }, { deg: -4, size: 19 }],
+];
+
+function TierHeader({ label, stars, textColor }: { label: string; stars: number; textColor: string }) {
+    const starDefs = TIER_STARS[stars - 1];
+    return (
+        <div className="mb-4 flex items-center gap-1">
+            {starDefs.map(({ deg, size }, i) => (
+                <Image key={i} src="/sponsors-section/star.png" alt="" width={size} height={size} style={{ transform: `rotate(${deg}deg)` }} />
+            ))}
+            <span className={`mx-1 font-rethink text-sm font-bold uppercase tracking-widest ${textColor}`}>
+                {label}
+            </span>
+            {[...starDefs].reverse().map(({ deg, size }, i) => (
+                <Image key={i} src="/sponsors-section/star.png" alt="" width={size} height={size} style={{ transform: `rotate(${-deg}deg)` }} />
+            ))}
+        </div>
+    );
+}
 
 function ThisCouldBeYouPlaceholder() {
     return (
@@ -29,9 +54,7 @@ function SponsorLayout() {
         <div className="flex flex-col items-center justify-center gap-8 w-full">
             {/* Gold — flex-wrap, container width forces exactly 2 per row */}
             <section className="flex flex-col items-center justify-center">
-                <h3 className="mb-4 text-center font-rethink text-md font-semibold uppercase tracking-widest text-[#FED571]">
-                    Summit
-                </h3>
+                <TierHeader label="Summit" stars={3} textColor="text-[#FED571]" />
                 {goldSponsors.length > 0 ? (
                     /* width = 2 cells + 1 gap (gap-2 = 8px) at each breakpoint */
                     <div className="w-[200px] sm:w-[368px] md:w-[448px]">
@@ -48,10 +71,8 @@ function SponsorLayout() {
                 )}
             </section>
             {/* Silver — flex-wrap */}
-            <div>
-                <h3 className="mb-4 text-center font-rethink text-md font-semibold uppercase tracking-widest text-white/70">
-                    Trail
-                </h3>
+            <div className="flex flex-col items-center">
+                <TierHeader label="Trail" stars={2} textColor="text-[#DDB94E]" />
                 {silverSponsors.length > 0 ? (
                     <div className="flex flex-wrap gap-2 justify-center align-center">
                         {silverSponsors.map((sponsor, index) => (
@@ -68,9 +89,7 @@ function SponsorLayout() {
             </div>
             {/* Bronze */}
             <section className="flex flex-col items-center justify-center">
-                <h3 className="mb-4 text-center font-rethink text-md font-semibold uppercase tracking-widest text-[#cd7f32]">
-                    Scout
-                </h3>
+                <TierHeader label="Scout" stars={1} textColor="text-[#d1a441]" />
                 {bronzeSponsors.length > 0 ? (
                     <div className="flex flex-wrap gap-2 justify-center align-center">
                         {bronzeSponsors.map((sponsor, index) => (
