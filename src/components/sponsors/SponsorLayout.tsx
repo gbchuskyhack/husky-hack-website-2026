@@ -1,83 +1,112 @@
-import BronzeSponsorCard from "./BronzneSponsorCard";
-import GoldSponsorCard from "./GoldSponsorCard"
+import Image from "next/image";
+import BronzeSponsorCard from "./BronzeSponsorCard";
+import GoldSponsorCard from "./GoldSponsorCard";
 import SilverSponsorCard from "./SilverSponsorCard";
 import sponsors from "../../data/sponsors.json";
 
+// ── All card sizes live here ─────────────────────────────────────────────────
+const GOLD_SIZE = "w-[120px] h-[120px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px]";
+const SILVER_SIZE = "w-[70px]  h-[70px]  sm:w-[110px] sm:h-[110px] md:w-[130px] md:h-[130px]";
+const BRONZE_SIZE = "w-[50px]  h-[50px]  sm:w-[85px]  sm:h-[85px]  md:w-[100px] md:h-[100px] rounded-full";
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Each array is ordered outer → inner; right side mirrors in reverse
+const TIER_STARS = [
+    [{ deg: 10, size: 18 }],
+    [{ deg: -20, size: 13 }, { deg: 12, size: 18 }],
+    [{ deg: -15, size: 11 }, { deg: 8, size: 15 }, { deg: -4, size: 19 }],
+];
+
+function TierHeader({ label, stars, textColor }: { label: string; stars: number; textColor: string }) {
+    const starDefs = TIER_STARS[stars - 1];
+    return (
+        <div className="mb-4 flex items-center gap-1">
+            {starDefs.map(({ deg, size }, i) => (
+                <Image key={i} src="/sponsors-section/star.png" alt="" width={size} height={size} style={{ transform: `rotate(${deg}deg)` }} />
+            ))}
+            <span className={`mx-1 font-rethink text-sm font-bold uppercase tracking-widest ${textColor}`}>
+                {label}
+            </span>
+            {[...starDefs].reverse().map(({ deg, size }, i) => (
+                <Image key={i} src="/sponsors-section/star.png" alt="" width={size} height={size} style={{ transform: `rotate(${-deg}deg)` }} />
+            ))}
+        </div>
+    );
+}
+
+function ThisCouldBeYouPlaceholder() {
+    return (
+        <div className="flex h-36 w-36 flex-col items-center justify-center rounded-lg border border-dashed border-white/30 text-white/55">
+            <span className="font-rethink text-3xl leading-none">?</span>
+            <span className="mt-2 text-xs tracking-[0.08em] text-white/50">
+                This could be you.
+            </span>
+        </div>
+    );
+}
+
 function SponsorLayout() {
-    const goldSponsors = sponsors.tiers.find((tier) => tier.id === "gold")?.sponsors ?? [];
-    const silverSponsors = sponsors.tiers.find((tier) => tier.id === "silver")?.sponsors ?? [];
-    const bronzeSponsors = sponsors.tiers.find((tier) => tier.id === "bronze")?.sponsors ?? [];
-
-    const hasSponsors = goldSponsors.length > 0 || silverSponsors.length > 0 || bronzeSponsors.length > 0;
-
-    if (!hasSponsors) {
-        return (
-            <div className="flex flex-col items-center justify-center w-full py-12 gap-8">
-
-                <div className="w-9/10 flex flex-col flex-wrap md:flex-row items-center justify-center gap-6 md:gap-10">
-                    {/* Big Skeleton (Left) */} {/*TODO*/}
-                    <div
-                        className="w-72 h-48  md:w-96 md:h-64 rounded-xl bg-[#6c6c6c] border border-[#434343] shadow-inner"/>
-                    <div
-                        className="w-72 h-48  md:w-96 md:h-64 rounded-xl bg-[#6c6c6c] border border-[#434343] shadow-inner"/>
-                    <div
-                        className="w-72 h-48 md:w-96 md:h-64 rounded-xl bg-[#6c6c6c] border border-[#434343] shadow-inner"/>
-                    <div
-                        className="w-72 h-48  md:w-96 md:h-64 rounded-xl bg-[#6c6c6c] border border-[#434343] shadow-inner"/>
-                    <div
-                        className="w-72 h-48 md:w-96 md:h-64 rounded-xl bg-[#6c6c6c] border border-[#434343] shadow-inner"/>
-
-
-                </div>
-            </div>
-        );
-    }
+    const goldSponsors = sponsors.tiers.find((t) => t.id === "gold")?.sponsors ?? [];
+    const silverSponsors = sponsors.tiers.find((t) => t.id === "silver")?.sponsors ?? [];
+    const bronzeSponsors = sponsors.tiers.find((t) => t.id === "bronze")?.sponsors ?? [];
 
     return (
-        <div className="rounded-lg">
-            {goldSponsors.length > 0 &&
-                <div className="flex flex-wrap justify-center items-center min-w-[60vw] gap-2.5 py-10 ">
-                    {/* Gold Sponsors */}
-                    {goldSponsors.map((sponsor, index) => (
-                        <GoldSponsorCard
-                            key={index}
-                            title={sponsor.title}
-                            sponsorLogo={sponsor.sponsorLogo}
-                            borderColour={sponsor.borderColour}
-                        />
-                    ))}
-                </div>
-            }
-            {silverSponsors.length > 0 &&
-                <div className="flex flex-wrap justify-center items-center min-w-[60vw] gap-2.5 py-10">
-                    {/* Silver Sponsors */} <br />
-                    {silverSponsors.map((sponsor, index) => (
-                        <SilverSponsorCard
-                            key={index}
-                            title={sponsor.title}
-                            sponsorLogo={sponsor.sponsorLogo}
-                            borderColour={sponsor.borderColour}
-                            link={sponsor.link}
-                        />
-                    ))}
-                </div>
-            }
-            {bronzeSponsors.length > 0 &&
-                <div className="flex flex-wrap justify-center items-center min-w-[60vw] gap-2.5 py-10 ">
-                    {/* Bronze Sponsor */}
-                    {bronzeSponsors.map((sponsor, index) => (
-                        <BronzeSponsorCard
-                            key={index}
-                            title={sponsor.title}
-                            sponsorLogo={sponsor.sponsorLogo}
-                            borderColour={sponsor.borderColour}
-                            link={sponsor.link}
-                        />
-                    ))}
-                </div>
-            }
-        </div>
+        <div className="flex flex-col items-center justify-center gap-8 w-full">
+            {/* Gold — flex-wrap, container width forces exactly 2 per row */}
+            <section className="flex flex-col items-center justify-center">
+                <TierHeader label="Summit" stars={3} textColor="text-[#FED571]" />
+                {goldSponsors.length > 0 ? (
+                    /* width = 2 cells + 1 gap (gap-2 = 8px) at each breakpoint */
+                    <div className="w-[200px] sm:w-[368px] md:w-[448px]">
+                        <div className="flex flex-wrap gap-2 justify-center align-center">
+                            {goldSponsors.map((sponsor, index) => (
+                                <div key={index} className={GOLD_SIZE}>
+                                    <GoldSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ) : (
+                    <ThisCouldBeYouPlaceholder />
+                )}
+            </section>
+            {/* Silver — flex-wrap */}
+            <div className="flex flex-col items-center">
+                <TierHeader label="Trail" stars={2} textColor="text-[#DDB94E]" />
+                {silverSponsors.length > 0 ? (
+                    <div className="flex flex-wrap gap-2 justify-center align-center">
+                        {silverSponsors.map((sponsor, index) => (
+                            <div key={index} className={SILVER_SIZE}>
+                                <SilverSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="flex justify-center">
+                        <ThisCouldBeYouPlaceholder />
+                    </div>
+                )}
+            </div>
+            {/* Bronze */}
+            <section className="flex flex-col items-center justify-center">
+                <TierHeader label="Scout" stars={1} textColor="text-[#d1a441]" />
+                {bronzeSponsors.length > 0 ? (
+                    <div className="flex flex-wrap gap-2 justify-center align-center">
+                        {bronzeSponsors.map((sponsor, index) => (
+                            <div key={index} className={BRONZE_SIZE}>
+                                <BronzeSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <ThisCouldBeYouPlaceholder />
+                )}
+            </section>
 
+
+
+
+        </div>
     );
 }
 

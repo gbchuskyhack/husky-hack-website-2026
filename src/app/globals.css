@@ -20,6 +20,16 @@ html {
   animation: scroll 70s linear infinite;
 }
 
+/* Sponsor card subtle shine sweep */
+@keyframes card-shine {
+  0%   { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(220%)  skewX(-20deg); }
+}
+
+.sponsor-shine {
+  animation: card-shine 4s ease-in-out infinite;
+}
+
 .grecaptcha-badge {
     visibility: hidden;
 }
