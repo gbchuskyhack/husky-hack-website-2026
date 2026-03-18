@@ -4,25 +4,33 @@
       "id": "gold",
       "label": "Gold Sponsors",
       "description": "Top-tier partners helping power HuskyHack.",
-      "sponsors": []
+      "sponsors": [
+        {
+          "name": "This could be you!",
+          "logo": "/sponsors-section/loremipsum.svg",
+          "logoDark": "/sponsors-section/loremipsum.svg",
+          "link": "https://www.huskyhack.ca/contact?query=sponsorship"
+        }
+      ]
     },
     {
       "id": "silver",
       "label": "Silver Sponsors",
       "description": "Supporters helping us create a smooth hacker experience.",
-      "sponsors": []
+      "sponsors": [
+        {
+          "name": "Think about it",
+          "logo": "/sponsors-section/loremipsum.svg",
+          "logoDark": "/sponsors-section/loremipsum.svg",
+          "link": "https://www.huskyhack.ca/contact?query=sponsorship"
+        }
+      ]
     },
     {
       "id": "bronze",
       "label": "Bronze Sponsors",
       "description": "Community supporters backing student builders.",
       "sponsors": [
-        {
-          "name": "Rezzy",
-          "logo": "/sponsors-section/rezzy-light.jpg",
-          "logoDark": "/sponsors-section/rezzy-dark.jpg",
-          "link": "https://www.rezzy.dev/"
-        },
         {
           "name": "Rezzy",
           "logo": "/sponsors-section/rezzy-light.jpg",

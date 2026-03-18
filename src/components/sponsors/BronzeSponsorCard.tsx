@@ -16,6 +16,7 @@ function BronzeSponsorCard({ title, sponsorLogo, link, cardClassName = "" }: Bro
           display-flex
           transition duration-300
           rounded-md
+          overflow-hidden
           group
           ${cardClassName}
         `}
@@ -26,6 +27,11 @@ function BronzeSponsorCard({ title, sponsorLogo, link, cardClassName = "" }: Bro
           height={1}
           alt={`Brand logo for ${title}`}
           className="w-full h-full object-contain transition duration-100 rounded-md"
+        />
+        {/* subtle shine sweep */}
+        <span
+          aria-hidden
+          className="sponsor-shine pointer-events-none absolute inset-0 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent"
         />
         <span
           className="
