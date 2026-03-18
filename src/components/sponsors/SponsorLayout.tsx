@@ -31,53 +31,46 @@ function SponsorLayout() {
     // Container = (2 × cell) + (1 × gap-2=8px) at each breakpoint
 
     return (
-        <div className="flex flex-row items-start justify-center gap-8 w-full">
-
-            {/* Left: Gold + Silver */}
-            <div className="flex flex-col gap-6">
-
-                {/* Gold — flex-wrap, container width forces exactly 2 per row */}
-                {goldSponsors.length > 0 && (
-                    <section className="flex flex-col items-center justify-center">
-                        <h3 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-widest text-[#FED571]">
-                            Gold Sponsors
-                        </h3>
-                        {/* width = 2 cells + 1 gap (gap-2 = 8px) at each breakpoint */}
-                        <div className="w-[200px] sm:w-[368px] md:w-[448px]">
-                            <div className="flex flex-wrap gap-2 justify-center align-center">
-                                {goldSponsors.map((sponsor, index) => (
-                                    <div key={index} className={GOLD_SIZE}>
-                                        <GoldSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-                )}
-
-                {/* Silver — flex-wrap */}
-                {silverSponsors.length > 0 && (
-                    <div>
-                        <h3 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-widest text-white/70">
-                            Silver Sponsors
-                        </h3>
+        <div className="flex flex-col items-center justify-center gap-8 w-full">
+            {/* Gold — flex-wrap, container width forces exactly 2 per row */}
+            {goldSponsors.length > 0 && (
+                <section className="flex flex-col items-center justify-center">
+                    <h3 className="mb-4 text-center font-rethink text-md font-semibold uppercase tracking-widest text-[#FED571]">
+                        Summit
+                    </h3>
+                    {/* width = 2 cells + 1 gap (gap-2 = 8px) at each breakpoint */}
+                    <div className="w-[200px] sm:w-[368px] md:w-[448px]">
                         <div className="flex flex-wrap gap-2 justify-center align-center">
-                            {silverSponsors.map((sponsor, index) => (
-                                <div key={index} className={SILVER_SIZE}>
-                                    <SilverSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
+                            {goldSponsors.map((sponsor, index) => (
+                                <div key={index} className={GOLD_SIZE}>
+                                    <GoldSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
                                 </div>
                             ))}
                         </div>
                     </div>
-                )}
-
-            </div>
-
+                </section>
+            )}
+            {/* Left: Gold + Silver */}
+            {/* Silver — flex-wrap */}
+            {silverSponsors.length > 0 && (
+                <div>
+                    <h3 className="mb-4 text-center font-rethink text-md font-semibold uppercase tracking-widest text-white/70">
+                        Trail
+                    </h3>
+                    <div className="flex flex-wrap gap-2 justify-center align-center">
+                        {silverSponsors.map((sponsor, index) => (
+                            <div key={index} className={SILVER_SIZE}>
+                                <SilverSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
             {/* Right: Bronze */}
             {bronzeSponsors.length > 0 && (
                 <section className="flex flex-col items-center justify-center">
-                    <h3 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-widest text-[#cd7f32]">
-                        Bronze Sponsors
+                    <h3 className="mb-4 text-center font-rethink text-md font-semibold uppercase tracking-widest text-[#cd7f32]">
+                        Scout
                     </h3>
                     <div className="flex flex-wrap gap-2 justify-center align-center">
                         {bronzeSponsors.map((sponsor, index) => (
@@ -88,6 +81,9 @@ function SponsorLayout() {
                     </div>
                 </section>
             )}
+
+
+
 
         </div>
     );
