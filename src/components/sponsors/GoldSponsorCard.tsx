@@ -3,35 +3,30 @@ import Image from "next/image";
 type GoldSponsorCardProps = {
   title: string;
   sponsorLogo: string;
-  borderColour: string;
+  link: string;
 };
 
-function GoldSponsorCard({
-  title,
-  sponsorLogo,
-  borderColour,
-}: GoldSponsorCardProps) {
+function GoldSponsorCard({ title, sponsorLogo, link }: GoldSponsorCardProps) {
   return (
-    <div
-      className="
-        flex flex-col items-center justify-center
-        rounded-md h-[30vw] w-[30vw]
-        p-6 grayscale opacity-90 transition duration-300
-        hover:grayscale-0 hover:opacity-100"
-      style={{ border: `2px solid ${borderColour}` }}
-    >
-
-      {/* Logo */}
-      <div className="flex items-center justify-center">
+    <a href={link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+      <div className="relative flex items-center justify-center w-full h-full transition duration-100 group rounded-md overflow-hidden">
         <Image
           src={sponsorLogo}
+          width={1}
+          height={1}
           alt={`Brand logo for ${title}`}
-          className="
-          max-h-[25vw] object-contain"
-
+          className="w-full h-full object-contain transition duration-100 rounded-md"
         />
+        {/* subtle shine sweep */}
+        <span
+          aria-hidden
+          className="sponsor-shine pointer-events-none absolute inset-0 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+        />
+        <span className="absolute inset-0 flex items-center justify-center text-white font-bold text-base bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none rounded">
+          {title}
+        </span>
       </div>
-    </div>
+    </a>
   );
 }
 
