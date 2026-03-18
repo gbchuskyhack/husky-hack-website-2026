@@ -53,8 +53,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={`${vt323.variable} ${chivoMono.variable} ${rethink_sans.variable} ${instrument_sans.variable}`}>
+        <html lang="en" className="bg-[#243a5a]">
+            <body className={`${vt323.variable} ${chivoMono.variable} ${rethink_sans.variable} ${instrument_sans.variable} bg-[#243a5a]`}>
                 <RecaptchaProvider>
                     {children}
                 </RecaptchaProvider>
