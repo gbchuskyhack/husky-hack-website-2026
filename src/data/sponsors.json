@@ -22,6 +22,12 @@
           "logo": "/sponsors-section/rezzy-light.jpg",
           "logoDark": "/sponsors-section/rezzy-dark.jpg",
           "link": "https://www.rezzy.dev/"
+        },
+        {
+          "name": "Rezzy",
+          "logo": "/sponsors-section/rezzy-light.jpg",
+          "logoDark": "/sponsors-section/rezzy-dark.jpg",
+          "link": "https://www.rezzy.dev/"
         }
       ]
     },

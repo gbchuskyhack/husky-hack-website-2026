@@ -1,4 +1,4 @@
-import BronzeSponsorCard from "./BronzneSponsorCard";
+import BronzeSponsorCard from "./BronzeSponsorCard";
 import GoldSponsorCard from "./GoldSponsorCard";
 import SilverSponsorCard from "./SilverSponsorCard";
 import sponsors from "../../data/sponsors.json";
