@@ -37,9 +37,9 @@ export default function MediaSection() {
                             .filter((tier) => tier.sponsors.length > 0)
                             .map((tier) => (
                                 <div key={tier.id}>
-                                    <h2 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-[0.12em] text-white">
+                                    {/* <h2 className="mb-4 text-center font-rethink text-lg font-semibold uppercase tracking-[0.12em] text-white">
                                         {tier.label}
-                                    </h2>
+                                    </h2> */}
                                     <div className="flex w-full flex-wrap justify-center gap-6 sm:gap-8">
                                         {tier.sponsors.map((partner) => (
                                             <MediaPartnerCard
