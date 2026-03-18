@@ -71,7 +71,7 @@ export default function NavBar() {
 
           {/* Right Section */}
           <div className="hidden md:flex items-center justify-end gap-6">
-            <Link href={process.env.NEXT_PUBLIC_DISCORD_INVITE_URL} >
+            <Link href={process.env.NEXT_PUBLIC_DISCORD_INVITE_URL ? process.env.NEXT_PUBLIC_DISCORD_INVITE_URL : ""} >
               <DiscordIcon className="hover:text-[#FED571] transition" size={24} />
             </Link>
             <Link href={"mailto:info.huskyhack@gmail.com"} >
