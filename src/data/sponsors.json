@@ -4,7 +4,14 @@
       "id": "gold",
       "label": "Gold Sponsors",
       "description": "Top-tier partners helping power HuskyHack.",
-      "sponsors": [ ]
+      "sponsors": [ 
+        {
+          "name": "Digitalizers",
+          "logo": "/sponsors-section/digitalizers-light.png",
+          "logoDark": "/sponsors-section/digitalizers-light.png",
+          "link": "https://www.digitalizers.ca/"
+        }
+      ]
     },
     {
       "id": "silver",
