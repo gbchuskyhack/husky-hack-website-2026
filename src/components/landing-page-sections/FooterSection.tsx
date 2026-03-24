@@ -30,19 +30,19 @@ export default function FooterSection() {
 
                         <p className="text-[11px] leading-tight text-gray-900/60 mt-4 max-w-[280px] font-medium selection:bg-white/30">
                             This site is protected by reCAPTCHA and the Google{' '}
-                            <a 
-                                href="https://policies.google.com/privacy" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
+                            <a
+                                href="https://policies.google.com/privacy"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="underline decoration-gray-900/30 underline-offset-2 hover:text-white hover:decoration-white transition-all duration-200"
                             >
                                 Privacy Policy
                             </a>{' '}
                             and{' '}
-                            <a 
-                                href="https://policies.google.com/terms" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
+                            <a
+                                href="https://policies.google.com/terms"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="underline decoration-gray-900/30 underline-offset-2 hover:text-white hover:decoration-white transition-all duration-200"
                             >
                                 Terms of Service
@@ -52,7 +52,7 @@ export default function FooterSection() {
 
                         <div className="flex flex-row gap-4 mt-6">
                             <a
-                                href={process.env.NEXT_PUBLIC_DISCORD_INVITE_URL || ""}
+                                href={process.env.NEXT_PUBLIC_DISCORD_INVITE_URL ? process.env.NEXT_PUBLIC_DISCORD_INVITE_URL : "#"}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="font-instrument font-semibold text-gray-900 hover:text-white transition-colors duration-300"
