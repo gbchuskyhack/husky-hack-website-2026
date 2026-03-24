@@ -12,6 +12,23 @@
                     "link": "https://www.startupgrind.com/"
                 }
             ]
+        },
+        {
+            "id": "community",
+            "label": "Community Supporters",
+            "description": "Community organizations supporting HuskyHack.",
+            "sponsors": [
+                {
+                    "name": "George Brown Polytechnic",
+                    "logo": "/partners/gbp-logo.jpg",
+                    "link": "https://www.georgebrown.ca/"
+                },
+                {
+                    "name": "MLH - Hack Days",
+                    "logo": "/partners/mlh-logo-color.svg",
+                    "link": "https://www.mlh.com/hack-days"
+                }
+            ]
         }
     ]
 }

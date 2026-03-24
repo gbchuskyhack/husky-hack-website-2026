@@ -19,9 +19,10 @@ export default function MediaPartnerCard({
                 className="
           flex flex-col items-center justify-center
           rounded-md 
-          h-[15vw] w-[15vw]
-          min-h-[160px] min-w-[160px]
-          p-4
+          h-[14vw] w-[14vw]
+          min-h-[144px] min-w-[144px]
+          max-h-[164px] max-w-[164px]
+          p-3
           transition duration-300
         "
             >
