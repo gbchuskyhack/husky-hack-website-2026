@@ -41,7 +41,7 @@ export default function HeroSection() {
 
                 <div className="absolute bottom-10 mt-10 flex flex-col items-center gap-2">
 
-                    <p className="text-md text-gray-300">Applications close March 25th.</p>
+                    <p className="text-md text-gray-300">Applications close April 1st.</p>
                     <div className="flex flex-col items-center">
                         <ArrowDown className="w-6 h-6 text-white mt-4 animate-bounce" style={{ opacity: arrowOpacity }} />
                     </div>
