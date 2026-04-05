@@ -125,8 +125,8 @@ const WhatToExpectSection = () => {
                             title="Mentor"
                             description="Be a Trail Guide. Share your expertise, help teams navigate technical challenges, and lead hackers toward their 'aha' moments."
                             buttonText="Apply"
-                            buttonLink={isMentorRegistrationOpen ? "/registration/mentor" : undefined}
-                            disabled={!isMentorRegistrationOpen}
+                            buttonLink={"/registration/mentor"}
+                            disabled={false}
                         />
 
                         <RoleCard
@@ -134,8 +134,8 @@ const WhatToExpectSection = () => {
                             title="Judge"
                             description="Evaluate the projects. Review the teams' final builds, score technical achievements, and select the winning hacks."
                             buttonText="Apply"
-                            buttonLink={isJudgeRegistrationOpen ? "/registration/judge" : undefined}
-                            disabled={!isJudgeRegistrationOpen}
+                            buttonLink={"/registration/judge"}
+                            disabled={false}
                         />
                     </div>
                 </section>
