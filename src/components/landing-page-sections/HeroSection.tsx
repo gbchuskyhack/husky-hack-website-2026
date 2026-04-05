@@ -31,12 +31,12 @@ export default function HeroSection() {
                     George Brown Polytechnic, Waterfront
                 </p>
                 <div className="mt-7">
-                    <Link
-                        href="/registration/hacker"
-                        className="px-8 py-3 bg-[#FF7703] text-black border-2 border-[#A63C06] rounded-full hover:brightness-110 transition"
+                    <button
+                        disabled
+                        className="px-8 py-3 bg-[#FF7703]/40 text-black/50 border-2 border-[#A63C06]/40 rounded-full cursor-not-allowed"
                     >
                         <span className="font-rethink text-md font-semibold">Apply Now!</span>
-                    </Link>
+                    </button>
                 </div>
 
                 <div className="absolute bottom-10 mt-10 flex flex-col items-center gap-2">
