@@ -4,7 +4,7 @@
       "id": "gold",
       "label": "Gold Sponsors",
       "description": "Top-tier partners helping power HuskyHack.",
-      "sponsors": [ 
+      "sponsors": [
         {
           "name": "Digitalizers",
           "logo": "/sponsors-section/digitalizers-light.png",
@@ -17,7 +17,14 @@
       "id": "silver",
       "label": "Silver Sponsors",
       "description": "Supporters helping us create a smooth hacker experience.",
-      "sponsors": [ ]
+      "sponsors": [
+          {
+            "name": "Backboard.io",
+            "logo": "/sponsors-section/backboard-light.jpg",
+            "logoDark": "/sponsors-section/backboard-light.jpg",
+            "link": "https://www.backboard.io/"
+          }
+      ]
     },
     {
       "id": "bronze",
