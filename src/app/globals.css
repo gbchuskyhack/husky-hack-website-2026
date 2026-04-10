@@ -22,8 +22,8 @@ html {
 
 /* Sponsor card subtle shine sweep */
 @keyframes card-shine {
-  0%   { transform: translateX(-120%) skewX(-20deg); }
-  100% { transform: translateX(220%)  skewX(-20deg); }
+  0%   { transform: translateX(-400%) skewX(-20deg); }
+  100% { transform: translateX(500%)  skewX(-20deg); }
 }
 
 .sponsor-shine {
