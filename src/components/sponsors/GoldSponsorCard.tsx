@@ -4,18 +4,20 @@ type GoldSponsorCardProps = {
   title: string;
   sponsorLogo: string;
   link: string;
+  scale?: number;
 };
 
-function GoldSponsorCard({ title, sponsorLogo, link }: GoldSponsorCardProps) {
+function GoldSponsorCard({ title, sponsorLogo, link, scale }: GoldSponsorCardProps) {
   return (
     <a href={link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
-      <div className="relative flex items-center justify-center w-full h-full transition duration-100 group rounded-md overflow-hidden">
+      <div className="relative flex items-center justify-center w-full aspect-square transition duration-100 group rounded-md overflow-hidden bg-white">
         <Image
           src={sponsorLogo}
-          width={1}
-          height={1}
+          width={400}
+          height={400}
           alt={`Brand logo for ${title}`}
           className="w-full h-full object-contain transition duration-100 rounded-md"
+          style={scale ? { transform: `scale(${scale})` } : undefined}
         />
         {/* subtle shine sweep */}
         <span
