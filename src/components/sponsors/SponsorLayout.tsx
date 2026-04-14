@@ -7,7 +7,7 @@ import sponsors from "../../data/sponsors.json";
 // ── All card sizes live here ─────────────────────────────────────────────────
 const GOLD_SIZE = "w-[150px] h-[150px] sm:w-[220px] sm:h-[220px] md:w-[270px] md:h-[270px]";
 const SILVER_SIZE = "w-[90px]  h-[90px]  sm:w-[135px] sm:h-[135px] md:w-[160px] md:h-[160px]";
-const BRONZE_SIZE = "w-[65px]  h-[65px]  sm:w-[105px] sm:h-[105px] md:w-[125px] md:h-[125px] rounded-full";
+const BRONZE_SIZE = "w-[65px]  h-[65px]  sm:w-[105px] sm:h-[105px] md:w-[125px] md:h-[125px]";
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Each array is ordered outer → inner; right side mirrors in reverse

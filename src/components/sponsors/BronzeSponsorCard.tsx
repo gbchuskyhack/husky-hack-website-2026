@@ -13,18 +13,19 @@ function BronzeSponsorCard({ title, sponsorLogo, link, cardClassName = "" }: Bro
       <div
         className={`
           relative flex items-center justify-center
-          display-flex
+          w-full aspect-square
           transition duration-300
           rounded-md
           overflow-hidden
           group
+          bg-white
           ${cardClassName}
         `}
       >
         <Image
           src={sponsorLogo}
-          width={1}
-          height={1}
+          width={400}
+          height={400}
           alt={`Brand logo for ${title}`}
           className="w-full h-full object-contain transition duration-100 rounded-md"
         />
