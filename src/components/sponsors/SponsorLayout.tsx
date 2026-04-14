@@ -61,7 +61,7 @@ function SponsorLayout() {
                         <div className="flex flex-wrap gap-2 justify-center align-center">
                             {goldSponsors.map((sponsor, index) => (
                                 <div key={index} className={GOLD_SIZE}>
-                                    <GoldSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
+                                    <GoldSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} scale={(sponsor as any).scale} />
                                 </div>
                             ))}
                         </div>
@@ -77,7 +77,7 @@ function SponsorLayout() {
                     <div className="flex flex-wrap gap-2 justify-center align-center">
                         {silverSponsors.map((sponsor, index) => (
                             <div key={index} className={SILVER_SIZE}>
-                                <SilverSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
+                                <SilverSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} scale={(sponsor as any).scale} />
                             </div>
                         ))}
                     </div>
@@ -94,7 +94,7 @@ function SponsorLayout() {
                     <div className="flex flex-wrap gap-2 justify-center align-center">
                         {bronzeSponsors.map((sponsor, index) => (
                             <div key={index} className={BRONZE_SIZE}>
-                                <BronzeSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} />
+                                <BronzeSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} scale={(sponsor as any).scale} />
                             </div>
                         ))}
                     </div>

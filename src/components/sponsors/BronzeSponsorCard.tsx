@@ -5,9 +5,10 @@ type BronzeSponsorCardProps = {
   sponsorLogo: string;
   link: string;
   cardClassName?: string;
+  scale?: number;
 };
 
-function BronzeSponsorCard({ title, sponsorLogo, link, cardClassName = "" }: BronzeSponsorCardProps) {
+function BronzeSponsorCard({ title, sponsorLogo, link, cardClassName = "", scale }: BronzeSponsorCardProps) {
   return (
     <a href={link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
       <div
@@ -28,6 +29,7 @@ function BronzeSponsorCard({ title, sponsorLogo, link, cardClassName = "" }: Bro
           height={400}
           alt={`Brand logo for ${title}`}
           className="w-full h-full object-contain transition duration-100 rounded-md"
+          style={scale ? { transform: `scale(${scale})` } : undefined}
         />
         {/* subtle shine sweep */}
         <span

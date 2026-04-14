@@ -22,7 +22,8 @@
             "name": "Backboard.io",
             "logo": "/sponsors-section/backboard-light.jpg",
             "logoDark": "/sponsors-section/backboard-light.jpg",
-            "link": "https://www.backboard.io/"
+            "link": "https://www.backboard.io/",
+            "scale": 1.7
           }
       ]
     },
