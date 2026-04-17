@@ -126,7 +126,7 @@ const WhatToExpectSection = () => {
                             description="Be a Trail Guide. Share your expertise, help teams navigate technical challenges, and lead hackers toward their 'aha' moments."
                             buttonText="Apply"
                             buttonLink={"/registration/mentor"}
-                            disabled={false}
+                            disabled={true}
                         />
 
                         <RoleCard
@@ -135,7 +135,7 @@ const WhatToExpectSection = () => {
                             description="Evaluate the projects. Review the teams' final builds, score technical achievements, and select the winning hacks."
                             buttonText="Apply"
                             buttonLink={"/registration/judge"}
-                            disabled={false}
+                            disabled={true}
                         />
                     </div>
                 </section>

@@ -9,9 +9,9 @@ import {
 } from "@hugeicons/core-free-icons";
 
 export default function FooterSection() {
-    const isHackerRegistrationOpen = Boolean(process.env.NEXT_PUBLIC_OPNFORM_HACKER_FORM_ID);
-    const isMentorRegistrationOpen = Boolean(process.env.NEXT_PUBLIC_OPNFORM_MENTOR_FORM_ID);
-    const isJudgeRegistrationOpen = Boolean(process.env.NEXT_PUBLIC_OPNFORM_JUDGE_FORM_ID);
+    const isHackerRegistrationOpen = false;
+    const isMentorRegistrationOpen = false;
+    const isJudgeRegistrationOpen = false;
 
     return (
         <footer id="Footer" className="pt-10 bg-[#1E2024] flex flex-col font-semibold font-instrument">
