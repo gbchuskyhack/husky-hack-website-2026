@@ -232,6 +232,20 @@
                 "position": "Advisor",
                 "mainProfilePicturePath": "/team-profiles/tyler-main.jpg",
                 "secondaryProfilePicturePath": ""
+            },
+            {
+                "displayName": "Ammar Sultan",
+                "socialLink": "https://www.linkedin.com/in/ammar-sultann/",
+                "position": "Advisor",
+                "mainProfilePicturePath": "",
+                "secondaryProfilePicturePath": ""
+            },
+            {
+                "displayName": "Aadi Badola",
+                "socialLink": "https://www.linkedin.com/in/aadibadola/",
+                "position": "Advisor",
+                "mainProfilePicturePath": "/team-profiles/aadi-main.jpeg",
+                "secondaryProfilePicturePath": ""
             }
         ]
     }
