@@ -239,6 +239,13 @@
                 "position": "Advisor",
                 "mainProfilePicturePath": "",
                 "secondaryProfilePicturePath": ""
+            },
+            {
+                "displayName": "Aadi Badola",
+                "socialLink": "https://www.linkedin.com/in/aadibadola/",
+                "position": "Advisor",
+                "mainProfilePicturePath": "/team-profiles/aadi-main.jpeg",
+                "secondaryProfilePicturePath": ""
             }
         ]
     }
