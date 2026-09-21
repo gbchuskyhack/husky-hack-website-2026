@@ -38,6 +38,9 @@ export interface RoleCardProps {
     buttonText: string;
     disabled?: boolean;
     buttonLink?: string;
+    colors?: RoleCardColors;
+    hideImage?: boolean;
+    badge?: string;
 }
 
 const getImagePath = (image: StaticImageData | string): string =>
@@ -53,21 +56,27 @@ const RoleCard = ({
     buttonText,
     disabled = false,
     buttonLink,
+    colors,
+    hideImage = false,
+    badge,
 }: RoleCardProps) => {
+    const fallbackColors = getRoleCardColors(image);
     const { outerBadgeColor, borderBadgeColor, innerBadgeColor } =
-        getRoleCardColors(image);
+        colors ?? fallbackColors;
 
     return (
         <div className="w-full max-w-[360px] flex flex-col items-center text-center flex-1">
-            <div className="translate-y-8 w-32 h-32 rounded-full overflow-hidden flex items-center justify-center">
-                <Image
-                    src={image}
-                    alt={title}
-                    className="object-cover w-full h-full"
-                    width={1}
-                    height={1}
-                />
-            </div>
+            {!hideImage && (
+                <div className="translate-y-8 w-32 h-32 rounded-full overflow-hidden flex items-center justify-center">
+                    <Image
+                        src={image}
+                        alt={title}
+                        className="object-cover w-full h-full"
+                        width={1}
+                        height={1}
+                    />
+                </div>
+            )}
 
             <div className="w-full p-1.5 rounded-[42px]" style={{ backgroundColor: outerBadgeColor }}>
                 <div
@@ -77,7 +86,7 @@ const RoleCard = ({
                         borderColor: borderBadgeColor,
                     }}
                 >
-                    <div
+                        <div
                         className="w-full rounded-[30px] p-4"
                         style={{
                             borderColor: outerBadgeColor,
@@ -85,6 +94,11 @@ const RoleCard = ({
                             borderWidth: "3px",
                         }}
                     >
+                        {badge && (
+                            <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-black/20 border border-white/25 px-3 py-1 text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.16em] text-white/85">
+                                {badge}
+                            </span>
+                        )}
                         <h3 className="text-2xl md:text-3xl font-semibold text-white pb-1 mb-1 w-full font-rethink">
                             {title}
                         </h3>

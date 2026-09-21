@@ -38,15 +38,14 @@ export default function AboutUsSection() {
                         ABOUT US
                     </h2>
                     <h1 className="font-bold text-4xl md:text-6xl text-[#FED571] text-center font-rethink font-base">
-                        George Brown Polytechnic's largest student-run hackathon
+                        HuskyHack 2026 — George Brown Polytechnic's largest student-run hackathon
                     </h1>
                     <p className="italic text-lg text-gray-200 text-center font-instrument md:not-italic md:text-xl">
-                        Spend <strong className="text-white">12 hours</strong>{" "}
-                        in the heart of Toronto building something you're
-                        passionate about, food and caffeine is on us.{" "}
-                        <strong className="text-white">Find your pack</strong>{" "}
-                        among 150+ other to form an unstoppable team and
-                        unforgettable memories
+                        On <strong className="text-white">May 2nd, 2026</strong>,{" "}
+                        <strong className="text-white">150+ builders</strong>{" "}
+                        joined us in the heart of Toronto at George Brown Polytechnic, Waterfront for{" "}
+                        <strong className="text-white">12 hours</strong> of building, learning, and community.{" "}
+                        Fueled by free food and plenty of caffeine, hackers formed unstoppable teams, shipped real projects, and left with unforgettable memories — and found their pack.
                     </p>
                 </div>
                 <div className="hidden w-1/4 h-auto xl:block">
