@@ -63,8 +63,7 @@ export default function NavBar() {
 
           {/* Centre Section*/}
           <div className="hidden md:flex items-center gap-[clamp(1vw,5vw,4vw)] font-rethink font-semibold">
-            <Link href="#About-Us" className="hover:text-[#FED571] transition">About</Link>
-            <Link href="#Schedule" className="hover:text-[#FED571] transition">Schedule</Link>
+            <Link href="/about" className="hover:text-[#FED571] transition">About</Link>
             <Link href="#Sponsors" className="hover:text-[#FED571] transition">Sponsors</Link>
             <Link href="#FAQ" className="hover:text-[#FED571] transition">FAQ</Link>
           </div>
@@ -116,8 +115,7 @@ export default function NavBar() {
         open && (
           <div className="md:hidden bg-[#08182D] ease-in-out">
             <div className="flex flex-col items-start gap-6 py-6 px-8 text-white font-rethink">
-              <a href="#About-Us" onClick={() => setOpen(false)}>About</a>
-              <a href="#Schedule" onClick={() => setOpen(false)}>Schedule</a>
+              <a href="/about" onClick={() => setOpen(false)}>About</a>
               <a href="#Sponsors" onClick={() => setOpen(false)}>Sponsors</a>
               <a href="#FAQ" onClick={() => setOpen(false)}>FAQ</a>
 

@@ -37,9 +37,10 @@ const FeatureCard = ({
 );
 
 const WhatToExpectSection = () => {
-    const isHackerRegistrationOpen = Boolean(process.env.NEXT_PUBLIC_OPNFORM_HACKER_FORM_ID);
-    const isMentorRegistrationOpen = Boolean(process.env.NEXT_PUBLIC_OPNFORM_MENTOR_FORM_ID);
-    const isJudgeRegistrationOpen = Boolean(process.env.NEXT_PUBLIC_OPNFORM_JUDGE_FORM_ID);
+    // Registration is currently closed — keep all Apply buttons greyed out.
+    const isHackerRegistrationOpen = false;
+    const isMentorRegistrationOpen = false;
+    const isJudgeRegistrationOpen = false;
 
     return (
         <div>
@@ -125,8 +126,8 @@ const WhatToExpectSection = () => {
                             title="Mentor"
                             description="Be a Trail Guide. Share your expertise, help teams navigate technical challenges, and lead hackers toward their 'aha' moments."
                             buttonText="Apply"
-                            buttonLink={"/registration/mentor"}
-                            disabled={false}
+                            buttonLink={isMentorRegistrationOpen ? "/registration/mentor" : undefined}
+                            disabled={true}
                         />
 
                         <RoleCard
@@ -134,8 +135,8 @@ const WhatToExpectSection = () => {
                             title="Judge"
                             description="Evaluate the projects. Review the teams' final builds, score technical achievements, and select the winning hacks."
                             buttonText="Apply"
-                            buttonLink={"/registration/judge"}
-                            disabled={false}
+                            buttonLink={isJudgeRegistrationOpen ? "/registration/judge" : undefined}
+                            disabled={true}
                         />
                     </div>
                 </section>
