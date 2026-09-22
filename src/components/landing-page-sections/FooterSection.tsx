@@ -102,10 +102,10 @@ export default function FooterSection() {
                                 Info
                             </h3>
                             <a
-                                href="#About-Us"
+                                href="#Past-Event"
                                 className="font-instrument font-medium underline text-gray-900 hover:text-white transition-colors"
                             >
-                                About Us
+                                Past Event
                             </a>
                             <a
                                 href="#Sponsors"

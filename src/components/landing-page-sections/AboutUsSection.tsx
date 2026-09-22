@@ -1,7 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import campus from "../../assets/gbp-waterfront-campus.png";
-import studentsLearning from "../../assets/gbp-students-learning.png";
+import { useCallback, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function DiscordCustomIcon() {
     return (
@@ -16,96 +18,140 @@ function DiscordCustomIcon() {
     );
 }
 
+const CAROUSEL_IMAGES = [
+    { src: "/2026-pics/huskyhack2026-pic1.jpeg", alt: "HuskyHack 2026 hackers collaborating" },
+    { src: "/2026-pics/huskyhack2026-pic2.jpeg", alt: "HuskyHack 2026 event moment" },
+    { src: "/2026-pics/DSC_1514.jpg", alt: "HuskyHack 2026 hackers building projects" },
+    { src: "/2026-pics/DSC_1575.jpg", alt: "HuskyHack 2026 team working together" },
+    { src: "/2026-pics/DSC_1838.jpg", alt: "HuskyHack 2026 at George Brown Waterfront" },
+    { src: "/2026-pics/DSC_2012.jpg", alt: "HuskyHack 2026 celebration with the pack" },
+];
+
+function AboutCarousel() {
+    const [index, setIndex] = useState(0);
+
+    const goTo = useCallback((i: number) => {
+        setIndex((i + CAROUSEL_IMAGES.length) % CAROUSEL_IMAGES.length);
+    }, []);
+
+    const next = useCallback(() => goTo(index + 1), [goTo, index]);
+    const prev = useCallback(() => goTo(index - 1), [goTo, index]);
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            setIndex((i) => (i + 1) % CAROUSEL_IMAGES.length);
+        }, 5000);
+        return () => clearInterval(id);
+    }, []);
+
+    return (
+        <div className="flex w-full flex-col">
+            <div className="flex w-full items-center gap-1 sm:gap-2">
+                <button
+                    type="button"
+                    onClick={prev}
+                    aria-label="Previous photo"
+                    className="shrink-0 p-1 text-[#FED571] transition hover:text-white"
+                >
+                    <ChevronLeft className="h-7 w-7" strokeWidth={2.5} />
+                </button>
+
+                <div className="relative h-56 sm:h-[340px] flex-1 overflow-hidden rounded-[26px]">
+                    {CAROUSEL_IMAGES.map((img, i) => (
+                        <div
+                            key={img.src}
+                            className={`absolute inset-0 transition-opacity duration-500 ${
+                                i === index ? "opacity-100 z-10" : "opacity-0 z-0"
+                            }`}
+                            aria-hidden={i !== index}
+                        >
+                            <Image
+                                src={img.src}
+                                alt={img.alt}
+                                fill
+                                sizes="(max-width: 640px) 100vw, 560px"
+                                className="object-cover"
+                                priority={i === 0}
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                <button
+                    type="button"
+                    onClick={next}
+                    aria-label="Next photo"
+                    className="shrink-0 p-1 text-[#FED571] transition hover:text-white"
+                >
+                    <ChevronRight className="h-7 w-7" strokeWidth={2.5} />
+                </button>
+            </div>
+
+            <div className="mt-3 flex items-center justify-center gap-1.5">
+                {CAROUSEL_IMAGES.map((img, i) => (
+                    <button
+                        key={img.src}
+                        type="button"
+                        onClick={() => goTo(i)}
+                        aria-label={`Go to photo ${i + 1}`}
+                        className={`h-2 rounded-full transition-all ${
+                            i === index ? "w-6 bg-[#FED571]" : "w-2 bg-white/50 hover:bg-white/90"
+                        }`}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+}
+
 export default function AboutUsSection() {
     return (
         <section
-            className="relative w-full lg:pb-20 px-8 lg:px-0
+            className="relative w-full lg:pb-14 px-8 lg:px-0
             overflow-hidden flex flex-col items-center justify-center
-            bg-[#1C6D41] scroll-mt-40 pt-5"
-            id="About-Us"
+            bg-[#1C6D41] scroll-mt-40 pt-4"
+            id="Past-Event"
         >
-            <div className="relative z-10 flex flex-row items-end justify-between w-full lg:w-[95%]">
-                <div className="hidden w-1/4 h-auto xl:block">
-                    <Image
-                        src={studentsLearning}
-                        alt="GBP Students Learning"
-                        className="w-[80%] h-[80%] object-cover"
-                        width={800}
-                    />
-                </div>
-                <div className="flex-1 w-full flex flex-col items-center gap-4 md:w-1/2 pb-0 xl:pb-20">
-                    <h2 className="text-white text-3xl font-rethink font-semibold">
-                        ABOUT US
-                    </h2>
-                    <h1 className="font-bold text-4xl md:text-6xl text-[#FED571] text-center font-rethink font-base">
-                        HuskyHack 2026 — George Brown Polytechnic's largest student-run hackathon
-                    </h1>
-                    <p className="italic text-lg text-gray-200 text-center font-instrument md:not-italic md:text-xl">
-                        On <strong className="text-white">May 2nd, 2026</strong>,{" "}
-                        <strong className="text-white">150+ builders</strong>{" "}
-                        joined us in the heart of Toronto at George Brown Polytechnic, Waterfront for{" "}
-                        <strong className="text-white">12 hours</strong> of building, learning, and community.{" "}
-                        Fueled by free food and plenty of caffeine, hackers formed unstoppable teams, shipped real projects, and left with unforgettable memories — and found their pack.
-                    </p>
-                </div>
-                <div className="hidden w-1/4 h-auto xl:block">
-                    <Image
-                        src={campus}
-                        alt="GBP Waterfront Campus"
-                        className="w-[90%] h-[90%] object-cover"
-                        width={800}
-                    />
-                </div>
-            </div>
+            <div className="relative z-10 flex flex-col items-center gap-3 w-full lg:w-[95%] max-w-5xl">
+                <h2 className="text-white text-2xl font-rethink font-semibold">
+                    PAST EVENT
+                </h2>
 
-            <div className="block xl:hidden py-12 md:py-16">
-                <div className="relative w-[40vw] md:w-[30vw] lg:w-[20vw] aspect-square mx-auto">
-                    <Image
-                        src={studentsLearning}
-                        alt="GBP Students Learning"
-                        className="absolute inset-0 z-0 w-full h-full object-contain translate-x-12 translate-y-12 md:translate-x-16 md:translate-y-16"
-                        width={800}
-                    />
-                    <Image
-                        src={campus}
-                        alt="GBP Waterfront Campus"
-                        className="absolute inset-0 z-10 w-full h-full object-contain -translate-x-12 -translate-y-12 md:-translate-x-16 md:-translate-y-16"
-                        width={800}
-                    />
+                {/* Detached left image / right content */}
+                <div className="mt-4 w-full max-w-5xl mx-auto px-0 sm:px-4 flex flex-col sm:flex-row gap-6 md:gap-8 items-center">
+                            {/* Left: carousel */}
+                            <figure
+                                className="w-full sm:w-[480px] md:w-[520px] shrink-0 sm:self-center"
+                            >
+                                <AboutCarousel />
+                            </figure>
+                            {/* Right: text + Discord */}
+                            <div
+                                className="flex-1 flex flex-col items-center sm:items-start text-center sm:text-left justify-center"
+                            >
+                                <h3 className="font-rethink font-semibold text-xl md:text-2xl text-[#FED571] mb-3">
+                                    HuskyHack 2026
+                                </h3>
+                                <p className="text-gray-100 text-sm md:text-base leading-relaxed font-instrument">
+                                    On <strong className="text-white">May 2nd, 2026</strong>,{" "}
+                                    <strong className="text-white">150+ builders</strong>{" "}
+                                    joined us in the heart of Toronto at George Brown Polytechnic, Waterfront for{" "}
+                                    <strong className="text-white">12 hours</strong> of building, learning, and community.{" "}
+                                    Fueled by free food and plenty of caffeine, hackers formed unstoppable teams, shipped real projects, and left with unforgettable memories — and found their pack.
+                                </p>
+                                <Link
+                                    href={process.env.NEXT_PUBLIC_DISCORD_INVITE_URL || ""}
+                                    className="inline-flex items-center gap-2 mt-4 px-5 md:px-6 py-2.5 md:py-3 rounded-full border-2 border-[#A6D6B8]/70 bg-[#1E5A37]/85 text-white transition hover:bg-[#287246]/90 hover:border-[#C2E6CF]"
+                                >
+                                    <DiscordCustomIcon />
+                                    <span className="font-rethink text-md font-semibold tracking-wide whitespace-nowrap">Join Our Discord!</span>
+                                </Link>
+                            </div>
                 </div>
-            </div>
-
-            <div className="xl:hidden w-full flex justify-center mb-10">
-                <Image
-                    src="/husky-falling.svg"
-                    alt="Falling husky"
-                    className="w-[150px] md:w-[200px] h-auto"
-                    width={300}
-                    height={300}
-                />
-            </div>
-
-            <div className="flex flex-col items-center justify-center z-10 relative">
-                <Image
-                    src="/hole.svg"
-                    alt="Hole"
-                    className="w-[350px] md:w-[450px] lg:w-[600px] h-auto"
-                    width={796}
-                    height={202}
-                />
-                <Link
-                    href={process.env.NEXT_PUBLIC_DISCORD_INVITE_URL || ""}
-                    className="absolute top-1/2 left-1/2 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 
-                    px-4 py-3
-                    md:px-8 md:py-4 rounded-full border-2 border-[#A6D6B8]/70 bg-[#1E5A37]/85 text-white transition hover:bg-[#287246]/90 hover:border-[#C2E6CF]"
-                >
-                    <DiscordCustomIcon />
-                    <span className="font-rethink text-md font-semibold tracking-wide whitespace-nowrap ">Join Our Discord!</span>
-                </Link>
             </div>
 
             <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0">
-                <div className="relative w-full aspect-[1440/220] min-h-[72px] md:min-h-[110px]">
+                <div className="relative w-full aspect-[1440/220] min-h-[56px] md:min-h-[90px]">
                     <Image
                         src="/about-us-section/about-us.svg"
                         alt="Grass foreground"
