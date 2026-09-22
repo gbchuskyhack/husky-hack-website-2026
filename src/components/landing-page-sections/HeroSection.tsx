@@ -25,11 +25,11 @@ export default function HeroSection() {
                 </h1>
 
                 <p className="text-gray-200 text-base md:text-lg pt-5 max-w-2xl mx-auto leading-relaxed">
-                    HuskyHack is a hackathon community at George Brown Polytechnic connecting students and professionals through experimental build events.{" "}
-                    <Link href="/about" className="text-[#FED571] underline underline-offset-4 decoration-[#FED571]/50 hover:decoration-[#FED571] transition">
-                        ... learn more
-                    </Link>
+                    George Brown Polytechnic&apos;s Largest Student-run Hackathon Network.
                 </p>
+                <Link href="/about" className="text-[#FED571] underline underline-offset-4 decoration-[#FED571]/50 hover:decoration-[#FED571] transition mt-1 text-sm md:text-base">
+                    Learn more
+                </Link>
 
                 {/* Upcoming event spotlight — image box left, badge box right, connected */}
                 <div className="mt-8 w-full max-w-3xl mx-auto px-4">
