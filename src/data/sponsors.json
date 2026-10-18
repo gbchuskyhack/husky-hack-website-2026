@@ -46,11 +46,18 @@
         }
       ]
     },
-    {
+  {
       "id": "in-kind",
       "label": "In-Kind Partners",
       "description": "Partners supporting HuskyHack with tools, services, and resources.",
-      "sponsors": []
-    }
+      "sponsors": [
+          {
+            "name": "Red Bull",
+            "logo": "/sponsors-section/redbull.png",
+            "logoDark": "/sponsors-section/redbull.png",
+            "link": "https://www.redbull.com"
+          }
+      ]
+  }
   ]
 }
