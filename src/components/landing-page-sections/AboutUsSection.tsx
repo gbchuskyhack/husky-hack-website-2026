@@ -137,15 +137,24 @@ export default function AboutUsSection() {
                                     <strong className="text-white">150+ builders</strong>{" "}
                                     joined us in the heart of Toronto at George Brown Polytechnic, Waterfront for{" "}
                                     <strong className="text-white">12 hours</strong> of building, learning, and community.{" "}
-                                    Fueled by free food and plenty of caffeine, hackers formed unstoppable teams, shipped real projects, and left with unforgettable memories — and found their pack.
+                                    Fueled by free food and plenty of caffeine, hackers formed unstoppable teams, shipped real projects, and left with unforgettable memories.
                                 </p>
-                                <Link
-                                    href={process.env.NEXT_PUBLIC_DISCORD_INVITE_URL || ""}
-                                    className="inline-flex items-center gap-2 mt-4 px-5 md:px-6 py-2.5 md:py-3 rounded-full border-2 border-[#A6D6B8]/70 bg-[#1E5A37]/85 text-white transition hover:bg-[#287246]/90 hover:border-[#C2E6CF]"
-                                >
-                                    <DiscordCustomIcon />
-                                    <span className="font-rethink text-md font-semibold tracking-wide whitespace-nowrap">Join Our Discord!</span>
-                                </Link>
+                                <div className="flex flex-wrap gap-3 mt-4">
+                                    <Link
+                                        href={process.env.NEXT_PUBLIC_DISCORD_INVITE_URL || ""}
+                                        className="inline-flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3 rounded-full border-2 border-[#A6D6B8]/70 bg-[#1E5A37]/85 text-white transition hover:bg-[#287246]/90 hover:border-[#C2E6CF]"
+                                    >
+                                        <DiscordCustomIcon />
+                                        <span className="font-rethink text-md font-semibold tracking-wide whitespace-nowrap">Join Our Discord!</span>
+                                    </Link>
+                                    <Link
+                                        href="https://huskyhack-2026.devpost.com/project-gallery"
+                                        target="_blank"
+                                        className="inline-flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3 rounded-full border-2 border-[#FED571]/70 bg-transparent text-[#FED571] transition hover:bg-[#FED571]/10"
+                                    >
+                                        <span className="font-rethink text-md font-semibold tracking-wide whitespace-nowrap">View Submissions</span>
+                                    </Link>
+                                </div>
                             </div>
                 </div>
             </div>

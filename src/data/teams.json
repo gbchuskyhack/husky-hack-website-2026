@@ -248,5 +248,17 @@
                 "secondaryProfilePicturePath": ""
             }
         ]
+    },
+    {
+        "title": "Goat Volunteer",
+        "members": [
+            {
+                "displayName": "Ramtin",
+                "socialLink": "",
+                "position": "Goat Volunteer",
+                "mainProfilePicturePath": "/team-profiles/ramtin-main.jpg",
+                "secondaryProfilePicturePath": "/team-profiles/ramtin-alt.jpg"
+            }
+        ]
     }
 ]

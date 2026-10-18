@@ -49,6 +49,7 @@ function SponsorLayout() {
     const goldSponsors = sponsors.tiers.find((t) => t.id === "gold")?.sponsors ?? [];
     const silverSponsors = sponsors.tiers.find((t) => t.id === "silver")?.sponsors ?? [];
     const bronzeSponsors = sponsors.tiers.find((t) => t.id === "bronze")?.sponsors ?? [];
+const inKindSponsors = sponsors.tiers.find((t) => t.id === "in-kind")?.sponsors ?? [];
 
     return (
         <div className="flex flex-col items-center justify-center gap-8 w-full">
@@ -102,9 +103,21 @@ function SponsorLayout() {
                     <ThisCouldBeYouPlaceholder />
                 )}
             </section>
-
-
-
+            {/* In-Kind */}
+            <section className="flex flex-col items-center justify-center">
+                <TierHeader label="In-Kind" stars={1} textColor="text-[#d1a441]" />
+                {inKindSponsors.length > 0 ? (
+                    <div className="flex flex-wrap gap-2 justify-center align-center">
+                        {inKindSponsors.map((sponsor, index) => (
+                            <div key={index} className={BRONZE_SIZE}>
+                                <BronzeSponsorCard title={sponsor.name} sponsorLogo={sponsor.logo} link={sponsor.link} scale={(sponsor as any).scale} />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <ThisCouldBeYouPlaceholder />
+                )}
+            </section>
 
         </div>
     );
